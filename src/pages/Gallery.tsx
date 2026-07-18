@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ChevronLeft, ChevronRight, ZoomIn, Briefcase, Sun, Bed } from 'lucide-react';
 
-function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string, direction?: "up" | "left" | "right" }) {
+function FadeIn({ children, delay = 0, className, direction = "up", onClick }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any; onClick?: () => void }) {
   const yOffset = direction === "up" ? 40 : 0;
   const xOffset = direction === "left" ? 40 : direction === "right" ? -40 : 0;
 
@@ -14,6 +14,7 @@ function FadeIn({ children, delay = 0, className, direction = "up" }: { children
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={className}
+      onClick={onClick}
     >
       {children}
     </motion.div>

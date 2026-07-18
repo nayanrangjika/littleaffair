@@ -1,8 +1,9 @@
+import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowRight, MapPin, Users, Clock, Coffee, Utensils, Info } from 'lucide-react';
 
-function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string, direction?: "up" | "left" | "right" }) {
+function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
   const xOffset = direction === "left" ? 40 : direction === "right" ? -40 : 0;
 

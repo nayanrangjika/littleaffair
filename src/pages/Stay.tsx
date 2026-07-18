@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BedDouble, Home, Bath, Trees, ArrowRight, X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string, direction?: "up" | "left" | "right" }) {
+function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
   const xOffset = direction === "left" ? 40 : direction === "right" ? -40 : 0;
 

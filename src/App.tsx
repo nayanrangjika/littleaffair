@@ -20,6 +20,9 @@ import { Gallery } from './pages/Gallery';
 import { Book } from './pages/Book';
 import { PlaceholderPage } from './pages/Placeholder';
 import { ExperienceDetails } from './pages/ExperienceDetails';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsAndConditions } from './pages/TermsAndConditions';
+import { CancellationPolicy } from './pages/CancellationPolicy';
 
 export default function App() {
   return (
@@ -40,6 +43,9 @@ export default function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/recreation" element={<Recreation />} />
             <Route path="/book" element={<Book />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/cancellation-policy" element={<CancellationPolicy />} />
           </Routes>
         </main>
         <Footer />

@@ -1,9 +1,10 @@
+import React from 'react';
 import { motion } from 'motion/react';
 import { Sun, CloudRain, Snowflake, Cloud, MapPin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { WeatherWidget } from '../components/WeatherWidget';
 
-function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string, direction?: "up" | "left" | "right" }) {
+function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
   const xOffset = direction === "left" ? 40 : direction === "right" ? -40 : 0;
 

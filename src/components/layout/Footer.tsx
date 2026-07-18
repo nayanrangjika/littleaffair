@@ -57,7 +57,10 @@ export function Footer() {
           {/* Distances */}
           <div>
              <h4 className="text-xs font-semibold tracking-[0.2em] mb-8 text-white uppercase font-serif border-b border-white/10 pb-4 inline-block">Location</h4>
-             <p className="text-gray-400 font-light text-sm mb-6">
+             <p className="text-gray-300 font-light text-sm mb-3">
+               <strong>Little affair Sariska</strong>, Village Ghewar, Tehla, Rajgarh, Rajasthan 301410
+             </p>
+             <p className="text-gray-500 font-light text-xs mb-6 leading-relaxed">
                Conveniently accessible from major cities, nestled in the Aravalli hills.
              </p>
              <ul className="space-y-3">
@@ -107,9 +110,10 @@ export function Footer() {
           <p className="text-xs text-gray-500 font-light mb-4 md:mb-0">
             &copy; {new Date().getFullYear()} Little Affair Sariska. All Rights Reserved.
           </p>
-          <div className="flex items-center gap-6 text-xs text-gray-500 font-light">
-             <Link to="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-             <Link to="#" className="hover:text-white transition-colors">Terms of Service</Link>
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-xs text-gray-500 font-light">
+             <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+             <Link to="/terms-and-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
+             <Link to="/cancellation-policy" className="hover:text-white transition-colors">Cancellation & Refund Policy</Link>
           </div>
         </div>
       </div>

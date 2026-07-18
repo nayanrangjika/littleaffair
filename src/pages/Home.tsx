@@ -1,9 +1,9 @@
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Briefcase, Sun, Bed, ArrowRight, Compass, MapPin, Coffee, TreePine } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef } from 'react';
 
-function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string, direction?: "up" | "left" | "right" }) {
+function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
   const xOffset = direction === "left" ? 40 : direction === "right" ? -40 : 0;
   
@@ -128,9 +128,9 @@ export function Home() {
           </FadeIn>
 
           {/* Modern Bento Box Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 md:gap-6 h-[800px] md:h-[600px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 md:gap-6 h-auto md:h-[600px]">
             {/* Main Feature - Spans 2 rows on Desktop */}
-            <FadeIn delay={0.1} className="md:col-span-1 md:row-span-2 h-full">
+            <FadeIn delay={0.1} className="md:col-span-1 md:row-span-2 h-[350px] md:h-full">
               <div className="relative w-full h-full rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer">
                 <img 
                   src="/safari.jpg" 
@@ -149,7 +149,7 @@ export function Home() {
             </FadeIn>
 
             {/* Top Middle */}
-            <FadeIn delay={0.2} direction="left" className="md:col-span-1 md:row-span-1 h-full">
+            <FadeIn delay={0.2} direction="left" className="md:col-span-1 md:row-span-1 h-[250px] md:h-full">
               <div className="relative w-full h-full rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer">
                 <img 
                   src="/stone-villas.jpg" 
@@ -164,7 +164,7 @@ export function Home() {
             </FadeIn>
 
             {/* Top Right - Info Card */}
-            <FadeIn delay={0.3} direction="left" className="md:col-span-1 md:row-span-1 h-full">
+            <FadeIn delay={0.3} direction="left" className="md:col-span-1 md:row-span-1 h-auto md:h-full min-h-[250px]">
                <div className="bg-accent rounded-[2rem] w-full h-full p-8 text-white flex flex-col justify-between shadow-lg">
                  <div>
                    <TreePine className="w-10 h-10 mb-4 opacity-80" />
@@ -173,14 +173,14 @@ export function Home() {
                      Locally sourced materials and sustainable practices, blending perfectly with the Sariska landscape.
                    </p>
                  </div>
-                 <Link to="/stay" className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-accent hover:scale-110 transition-transform">
+                 <Link to="/stay" className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-accent hover:scale-110 transition-transform mt-6">
                    <ArrowRight className="w-5 h-5 -rotate-45" />
                  </Link>
                </div>
             </FadeIn>
 
             {/* Bottom Middle/Right - Spans 2 columns */}
-            <FadeIn delay={0.4} direction="up" className="md:col-span-2 md:row-span-1 h-full">
+            <FadeIn delay={0.4} direction="up" className="md:col-span-2 md:row-span-1 h-[250px] md:h-full">
               <div className="relative w-full h-full rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer">
                 <img 
                   src="/culinary.jpg" 

@@ -1,8 +1,8 @@
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Calendar, User, ArrowRight, CheckCircle2 } from 'lucide-react';
-import { useState } from 'react';
 
-function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string, direction?: "up" | "left" | "right" }) {
+function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
   const xOffset = direction === "left" ? 40 : direction === "right" ? -40 : 0;
 
