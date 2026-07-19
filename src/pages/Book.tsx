@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Calendar, User, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Calendar, User, ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -21,10 +21,76 @@ function FadeIn({ children, delay = 0, className, direction = "up" }: { children
 
 export function Book() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    if (isSubmitting) return;
+    
+    setIsSubmitting(true);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    const sheetWebhook = import.meta.env.VITE_GOOGLE_SHEETS_WEBHOOK_URL;
+    
+    // Consolidate multiple values (like checkboxes) into single strings
+    const dataObj: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      if (!dataObj[key]) {
+        dataObj[key] = value.toString();
+      } else {
+        dataObj[key] = `${dataObj[key]}, ${value.toString()}`;
+      }
+    });
+    
+    try {
+      const promises = [];
+      
+      // 1. Submit to Web3Forms (Email)
+      if (accessKey) {
+        const web3FormData = new FormData();
+        web3FormData.append("access_key", accessKey);
+        Object.entries(dataObj).forEach(([key, val]) => web3FormData.append(key, val));
+        
+        promises.push(
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: web3FormData
+          }).then(res => res.json())
+        );
+      } else {
+        console.warn("No VITE_WEB3FORMS_ACCESS_KEY provided for email");
+      }
+      
+      // 2. Submit to Google Sheets (via Apps Script Webhook)
+      if (sheetWebhook) {
+        // Using FormData perfectly simulates a standard HTML form submission
+        const sheetFormData = new FormData();
+        Object.entries(dataObj).forEach(([key, val]) => sheetFormData.append(key, val));
+        
+        promises.push(
+          fetch(sheetWebhook, {
+            method: "POST",
+            mode: "no-cors",
+            body: sheetFormData
+          })
+        );
+      } else {
+        console.warn("No VITE_GOOGLE_SHEETS_WEBHOOK_URL provided for sheets");
+      }
+      
+      if (promises.length > 0) {
+        await Promise.all(promises);
+      }
+      
+      setIsSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+       console.error("Submission error:", error);
+       alert("Network error. Please try again.");
+    } finally {
+       setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -79,19 +145,19 @@ export function Book() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">First Name *</label>
-                      <input required type="text" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="John" />
+                      <input required type="text" name="First_Name" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="John" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Last Name *</label>
-                      <input required type="text" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="Doe" />
+                      <input required type="text" name="Last_Name" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="Doe" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Email *</label>
-                      <input required type="email" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="john@example.com" />
+                      <input required type="email" name="Email" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="john@example.com" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Phone *</label>
-                      <input required type="tel" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="+91 XXXXX XXXXX" />
+                      <input required type="tel" name="Phone" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="+91 XXXXX XXXXX" />
                     </div>
                   </div>
                 </div>
@@ -102,33 +168,33 @@ export function Book() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Check-in Date *</label>
-                      <input required type="date" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" />
+                      <input required type="date" name="Check-in_Date" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Check-out Date *</label>
-                      <input required type="date" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" />
+                      <input required type="date" name="Check-out_Date" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Number of Guests *</label>
-                      <input required type="number" min="1" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="2" />
+                      <input required type="number" min="1" name="Number_of_Guests" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="2" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Number of Rooms *</label>
-                      <input required type="number" min="1" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="1" />
+                      <input required type="number" min="1" name="Number_of_Rooms" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" placeholder="1" />
                     </div>
                   </div>
                   
                   <div className="flex flex-col sm:flex-row gap-6">
                     <label className="flex items-center gap-3 cursor-pointer group">
                       <div className="relative flex items-center justify-center w-6 h-6 rounded-md border-2 border-gray-300 group-hover:border-accent transition-colors">
-                        <input type="checkbox" className="peer sr-only" />
+                        <input type="checkbox" name="Traveling_with_children" value="Yes" className="peer sr-only" />
                         <div className="hidden peer-checked:block w-3 h-3 bg-accent rounded-sm"></div>
                       </div>
                       <span className="text-gray-700 select-none">I'm traveling with children</span>
                     </label>
                     <label className="flex items-center gap-3 cursor-pointer group">
                       <div className="relative flex items-center justify-center w-6 h-6 rounded-md border-2 border-gray-300 group-hover:border-accent transition-colors">
-                        <input type="checkbox" className="peer sr-only" />
+                        <input type="checkbox" name="Traveling_with_pet" value="Yes" className="peer sr-only" />
                         <div className="hidden peer-checked:block w-3 h-3 bg-accent rounded-sm"></div>
                       </div>
                       <span className="text-gray-700 select-none">I'm traveling with pet</span>
@@ -150,7 +216,7 @@ export function Book() {
                     ].map((adv, idx) => (
                       <label key={idx} className="flex items-start gap-3 cursor-pointer group bg-[#f8f5f0] p-4 rounded-xl hover:bg-accent/5 transition-colors">
                         <div className="relative flex items-center justify-center w-5 h-5 mt-0.5 rounded border-2 border-gray-300 group-hover:border-accent transition-colors shrink-0">
-                          <input type="checkbox" className="peer sr-only" />
+                          <input type="checkbox" name="Adventures" value={adv} className="peer sr-only" />
                           <div className="hidden peer-checked:block w-2.5 h-2.5 bg-accent rounded-sm"></div>
                         </div>
                         <span className="text-sm text-gray-700 select-none">{adv}</span>
@@ -161,8 +227,20 @@ export function Book() {
 
                 {/* Submit */}
                 <div className="pt-8 text-center md:text-left border-t">
-                  <button type="submit" className="inline-flex items-center gap-2 bg-accent text-white px-10 py-5 rounded-full uppercase tracking-widest text-sm font-semibold hover:bg-accent-dark transition-colors shadow-xl w-full md:w-auto justify-center">
-                    Reserve Your Stay <ArrowRight className="w-5 h-5" />
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="inline-flex items-center gap-2 bg-accent text-white px-10 py-5 rounded-full uppercase tracking-widest text-sm font-semibold hover:bg-accent-dark transition-colors shadow-xl w-full md:w-auto justify-center disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" /> Processing...
+                      </>
+                    ) : (
+                      <>
+                        Reserve Your Stay <ArrowRight className="w-5 h-5" />
+                      </>
+                    )}
                   </button>
                 </div>
 
