@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Briefcase, Sun, Bed, ArrowRight, Compass, MapPin, Coffee, TreePine } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'motion/react';
+import { SEO } from '../components/SEO';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -32,6 +33,26 @@ export function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#f3eddf] overflow-x-hidden font-sans" ref={containerRef}>
+      <SEO 
+        title="Little Affair Sariska | Eco-Friendly Boutique Resort in Rajasthan"
+        description="Escape to Little Affair Sariska, an eco-friendly luxury resort in Rajasthan's Aravalli hills near Sariska Tiger Reserve. Experience stone villas, wildlife safaris, and bush dining."
+        path="/"
+        keywords="Little Affair Sariska, Resort in Sariska, Sariska National Park resort, Eco resort Rajasthan, Sariska Tiger Reserve stay, Luxury villas Sariska"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Resort",
+          "name": "Little Affair Sariska",
+          "url": "https://www.littleaffairsariska.com/",
+          "description": "Eco-friendly luxury resort in Sariska, Rajasthan with stone villas, wildlife safaris, and fine dining.",
+          "telephone": "+91-9910011234",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Tehla",
+            "addressRegion": "Rajasthan",
+            "addressCountry": "IN"
+          }
+        }}
+      />
       
       {/* Hero Section */}
       <section className="relative h-[100dvh] flex items-center justify-center overflow-hidden bg-[#f3eddf] p-2 md:p-4">

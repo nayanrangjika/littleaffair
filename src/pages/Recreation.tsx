@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Waves, BookOpen, Tv, Bike, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -30,6 +31,23 @@ const offerings = [
 export function Recreation() {
   return (
     <div className="flex flex-col min-h-screen bg-[#f3eddf] overflow-x-hidden font-sans pt-24 md:pt-32">
+      <SEO 
+        title="Recreation & Resort Amenities | Little Affair Sariska"
+        description="Relax and rejuvenate with premium amenities at Little Affair Sariska including a swimming pool, cozy library, TV lounge & pool table, and complimentary bicycles."
+        path="/recreation"
+        keywords="Little Affair Sariska pool, Sariska resort amenities, Swimming pool Sariska resort, Recreation Sariska, Bicycles resort Sariska"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Hotel",
+          "name": "Recreation at Little Affair Sariska",
+          "amenityFeature": [
+            { "@type": "LocationFeatureSpecification", "name": "Swimming Pool" },
+            { "@type": "LocationFeatureSpecification", "name": "Library" },
+            { "@type": "LocationFeatureSpecification", "name": "Bicycles" },
+            { "@type": "LocationFeatureSpecification", "name": "TV & Pool Lounge" }
+          ]
+        }}
+      />
       
       {/* Hero Header */}
       <section className="px-4 md:px-8 mb-12 md:mb-24">

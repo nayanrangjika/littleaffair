@@ -1,8 +1,14 @@
 import { motion } from 'motion/react';
+import { SEO } from '../components/SEO';
 
 export function CancellationPolicy() {
   return (
     <div className="pt-24 pb-16 bg-[#fbfbfa] min-h-screen">
+      <SEO 
+        title="Cancellation & Refund Policy | Little Affair Sariska"
+        description="Cancellation and refund policy details for resort bookings and activity reservations at Little Affair Sariska."
+        path="/cancellation-policy"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

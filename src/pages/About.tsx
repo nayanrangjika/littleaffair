@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Leaf, MapPin, Compass } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -22,6 +23,19 @@ function FadeIn({ children, delay = 0, className, direction = "up" }: { children
 export function About() {
   return (
     <div className="flex flex-col min-h-screen bg-[#f3eddf] overflow-x-hidden font-sans pt-24 md:pt-32">
+      <SEO 
+        title="About Us | Eco-Luxury Hospitality at Little Affair Sariska"
+        description="Learn about Little Affair Sariska's commitment to sustainable luxury, local community empowerment, and conservation in Sariska, Rajasthan."
+        path="/about"
+        keywords="About Little Affair Sariska, Eco luxury Sariska, Sustainable resort Rajasthan, Sariska conservation, Sariska eco resort story"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "About Little Affair Sariska",
+          "url": "https://www.littleaffairsariska.com/about",
+          "description": "Discover Little Affair Sariska's journey in eco-friendly hospitality, stone masonry, and wildlife conservation."
+        }}
+      />
       
       {/* Hero Header */}
       <section className="px-4 md:px-8 mb-12 md:mb-24">

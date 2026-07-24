@@ -1,8 +1,14 @@
 import { motion } from 'motion/react';
+import { SEO } from '../components/SEO';
 
 export function PrivacyPolicy() {
   return (
     <div className="pt-24 pb-16 bg-[#fbfbfa] min-h-screen">
+      <SEO 
+        title="Privacy Policy | Little Affair Sariska"
+        description="Privacy policy of Little Affair Sariska. Learn how we collect, protect, and handle your personal information."
+        path="/privacy-policy"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

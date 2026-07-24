@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Calendar, User, ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -115,6 +116,12 @@ export function Book() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#f3eddf] overflow-x-hidden font-sans pt-24 md:pt-32 pb-24">
+      <SEO 
+        title="Book Your Stay & Reservations | Little Affair Sariska"
+        description="Reserve your luxurious stone villa at Little Affair Sariska. Direct booking inquiry for eco-resort stays, jungle safaris, and romantic wilderness escapes in Rajasthan."
+        path="/book"
+        keywords="Book Sariska resort, Little Affair Sariska reservation, Sariska room booking, Luxury resort booking Sariska"
+      />
       
       {/* Hero Header */}
       <section className="px-4 md:px-8 mb-12 md:mb-16">

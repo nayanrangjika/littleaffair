@@ -1,8 +1,14 @@
 import { motion } from 'motion/react';
+import { SEO } from '../components/SEO';
 
 export function TermsAndConditions() {
   return (
     <div className="pt-24 pb-16 bg-[#fbfbfa] min-h-screen">
+      <SEO 
+        title="Terms & Conditions | Little Affair Sariska"
+        description="Terms and conditions for staying at Little Affair Sariska and utilizing our website and resort services."
+        path="/terms-and-conditions"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

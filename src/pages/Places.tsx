@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { MapPin, ArrowRight, Clock, Navigation } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -61,6 +62,25 @@ const places = [
 export function Places() {
   return (
     <div className="flex flex-col min-h-screen bg-[#f3eddf] overflow-x-hidden font-sans pt-24 md:pt-32">
+      <SEO 
+        title="Places to Visit near Sariska | Nearby Attractions at Little Affair"
+        description="Explore top attractions near Little Affair Sariska: Neelkanth Mahadev Temple, Bhangarh Fort, Kankwari Fort, Tehla Fort, Pandupol, and Gola Ka Bas."
+        path="/places"
+        keywords="Places to visit in Sariska, Bhangarh Fort, Neelkanth Mahadev Sariska, Kankwari Fort, Tehla Fort, Sariska attractions, Alwar sightseeing"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "Nearby Places to Visit near Little Affair Sariska",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Neelkanth Mahadev Temple" },
+            { "@type": "ListItem", "position": 2, "name": "Bhangarh Fort" },
+            { "@type": "ListItem", "position": 3, "name": "Kankwari Fort" },
+            { "@type": "ListItem", "position": 4, "name": "Tehla Fort" },
+            { "@type": "ListItem", "position": 5, "name": "Pandupol Temple" },
+            { "@type": "ListItem", "position": 6, "name": "Gola Ka Bas" }
+          ]
+        }}
+      />
       
       {/* Hero Header */}
       <section className="px-4 md:px-8 mb-12 md:mb-24">

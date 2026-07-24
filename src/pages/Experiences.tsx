@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Compass, Coffee, Map, Palmtree, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -62,6 +63,24 @@ const experiences = [
 export function Experiences() {
   return (
     <div className="flex flex-col min-h-screen bg-[#f3eddf] overflow-x-hidden font-sans pt-24 md:pt-32">
+      <SEO 
+        title="Curated Experiences & Wildlife Safaris | Little Affair Sariska"
+        description="Discover unforgettable adventures at Little Affair Sariska: Sariska Jungle Safari, Bush Farm Dinners, High Tea by the Boulders, High Tea by the Lake, and Nature Village Walks."
+        path="/experiences"
+        keywords="Sariska Jungle Safari, High Tea by the Boulders, Bush Farm Dinner Sariska, Sariska activities, Wildlife safari Rajasthan, Nature walk Sariska"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "Experiences at Little Affair Sariska",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Sariska Jungle Safari" },
+            { "@type": "ListItem", "position": 2, "name": "Bush Farm Dinner" },
+            { "@type": "ListItem", "position": 3, "name": "High Tea by the Boulders" },
+            { "@type": "ListItem", "position": 4, "name": "High Tea by the Lake" },
+            { "@type": "ListItem", "position": 5, "name": "Nature & Village Walk" }
+          ]
+        }}
+      />
       
       {/* Hero Header */}
       <section className="px-4 md:px-8 mb-12 md:mb-24">

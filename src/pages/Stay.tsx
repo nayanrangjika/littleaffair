@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BedDouble, Home, Bath, Trees, ArrowRight, X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -58,6 +59,23 @@ export function Stay() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#f3eddf] overflow-x-hidden font-sans pt-24 md:pt-32">
+      <SEO 
+        title="Luxury Stone Villas & Accommodation | Little Affair Sariska"
+        description="Stay in eco-luxurious stone villas at Little Affair Sariska. Built with locally sourced stone, private verandas, open-to-sky shower enclosures, and wilderness views."
+        path="/stay"
+        keywords="Stone Villas Sariska, Sariska resort stay, Luxury accommodation Sariska, Sariska Tiger Reserve villas, Eco luxury rooms Rajasthan"
+        ogImage="https://www.littleaffairsariska.com/stone-villas.jpg"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "HotelRoom",
+          "name": "Stone Villas at Little Affair Sariska",
+          "description": "Luxurious stone masonry villas with private verandas and open-air bath spaces near Sariska Tiger Reserve.",
+          "occupancy": {
+            "@type": "QuantitativeValue",
+            "maxValue": 3
+          }
+        }}
+      />
       
       {/* Hero Header */}
       <section className="px-4 md:px-8 mb-12 md:mb-24">

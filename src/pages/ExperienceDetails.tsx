@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowRight, MapPin, Users, Clock, Coffee, Utensils, Info } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -149,6 +150,24 @@ export function ExperienceDetails() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fbfbfa] overflow-x-hidden font-sans pt-24 md:pt-32">
+      <SEO 
+        title={`${data.title} | Experiences at Little Affair Sariska`}
+        description={data.shortDesc || `${data.title} at Little Affair Sariska in Rajasthan.`}
+        path={`/experiences/${slug}`}
+        keywords={`${data.title}, Little Affair Sariska experiences, Sariska activities, Sariska resort`}
+        ogImage={data.images && data.images[0] ? `https://www.littleaffairsariska.com${data.images[0]}` : undefined}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "TouristAttraction",
+          "name": data.title,
+          "description": data.shortDesc,
+          "location": {
+            "@type": "Place",
+            "name": "Little Affair Sariska",
+            "address": "Tehla, Sariska, Alwar, Rajasthan"
+          }
+        }}
+      />
       <section className="px-4 md:px-8 mb-16 md:mb-24">
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center max-w-4xl mx-auto mb-16">

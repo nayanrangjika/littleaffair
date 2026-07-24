@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Sun, CloudRain, Snowflake, Cloud, MapPin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { WeatherWidget } from '../components/WeatherWidget';
+import { SEO } from '../components/SEO';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -24,6 +25,12 @@ function FadeIn({ children, delay = 0, className, direction = "up" }: { children
 export function Weather() {
   return (
     <div className="flex flex-col min-h-screen bg-[#f3eddf] overflow-x-hidden font-sans pt-24 md:pt-32">
+      <SEO 
+        title="Sariska Weather & Best Time to Visit | Little Affair"
+        description="Check real-time weather forecasts, seasonal climate guide, and best time to visit Sariska Tiger Reserve for wildlife safaris and resort vacations."
+        path="/weather"
+        keywords="Sariska weather, Best time to visit Sariska, Sariska temperature, Sariska climate, Sariska safari season"
+      />
       
       {/* Hero Header */}
       <section className="px-4 md:px-8 mb-12 md:mb-24">

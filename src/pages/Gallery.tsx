@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ChevronLeft, ChevronRight, ZoomIn, Briefcase, Sun, Bed } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 function FadeIn({ children, delay = 0, className, direction = "up", onClick }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any; onClick?: () => void }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -103,6 +104,18 @@ export function Gallery() {
 
   return (
     <div className="pt-24 pb-16 bg-white min-h-screen">
+      <SEO 
+        title="Photo Gallery | Little Affair Sariska Resort Images"
+        description="Browse photo gallery of Little Affair Sariska: stone villas, serene swimming pool, jungle safari, gourmet dining, and natural landscapes of Rajasthan."
+        path="/gallery"
+        keywords="Little Affair Sariska photos, Sariska resort gallery, Sariska tiger reserve images, Stone villas Sariska pictures"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          "name": "Little Affair Sariska Photo Gallery",
+          "description": "High-resolution photos of stone villas, dining setups, and safari experiences in Sariska."
+        }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-16 pt-12">
           <h1 className="text-5xl md:text-6xl font-serif text-gray-900 mb-6">Gallery</h1>
