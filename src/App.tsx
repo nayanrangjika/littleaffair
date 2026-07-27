@@ -24,6 +24,7 @@ import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsAndConditions } from './pages/TermsAndConditions';
 import { CancellationPolicy } from './pages/CancellationPolicy';
 import { NotFound } from './pages/NotFound';
+import { ThankYou } from './pages/ThankYou';
 
 export default function App() {
   return (
@@ -44,6 +45,7 @@ export default function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/recreation" element={<Recreation />} />
             <Route path="/book" element={<Book />} />
+            <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/cancellation-policy" element={<CancellationPolicy />} />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 import { Calendar, User, ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
@@ -21,7 +22,7 @@ function FadeIn({ children, delay = 0, className, direction = "up" }: { children
 }
 
 export function Book() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -84,8 +85,7 @@ export function Book() {
         await Promise.all(promises);
       }
       
-      setIsSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      navigate('/thank-you');
     } catch (error) {
        console.error("Submission error:", error);
        alert("Network error. Please try again.");
@@ -93,26 +93,6 @@ export function Book() {
        setIsSubmitting(false);
     }
   };
-
-  if (isSubmitted) {
-    return (
-      <div className="flex flex-col min-h-screen bg-[#f3eddf] items-center justify-center font-sans pt-24 px-4">
-        <FadeIn className="bg-white p-12 md:p-20 rounded-[3rem] shadow-2xl text-center max-w-2xl w-full">
-          <CheckCircle2 className="w-24 h-24 text-green-500 mx-auto mb-8" />
-          <h2 className="text-4xl font-serif text-gray-900 mb-6">Enquiry Submitted</h2>
-          <p className="text-gray-600 font-light text-xl mb-12">
-            Thank you for your interest in Little Affair. Our team will get back to you shortly to confirm your reservation.
-          </p>
-          <button 
-            onClick={() => setIsSubmitted(false)}
-            className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-full uppercase tracking-widest text-sm font-semibold hover:bg-accent-dark transition-colors"
-          >
-            Make another enquiry
-          </button>
-        </FadeIn>
-      </div>
-    );
-  }
 
   return (
     <div className="flex flex-col min-h-screen bg-[#f3eddf] overflow-x-hidden font-sans pt-24 md:pt-32 pb-24">
