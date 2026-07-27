@@ -23,6 +23,7 @@ import { ExperienceDetails } from './pages/ExperienceDetails';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsAndConditions } from './pages/TermsAndConditions';
 import { CancellationPolicy } from './pages/CancellationPolicy';
+import { NotFound } from './pages/NotFound';
 
 export default function App() {
   return (
@@ -46,6 +47,7 @@ export default function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/cancellation-policy" element={<CancellationPolicy />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
