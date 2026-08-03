@@ -16,9 +16,11 @@ service cloud.firestore {
     }
 
     function isAdmin() {
-      return isEmailVerified() && (
+      return isSignedIn() && (
         request.auth.token.email == 'nayanasdf1234@gmail.com' ||
-        request.auth.token.email == 'Info@littleaffairsariska.com'
+        request.auth.token.email == 'Info@littleaffairsariska.com' ||
+        request.auth.token.email == 'admin@littleaffair.in' ||
+        request.auth.token.email.matches('.*@littleaffair\\.in')
       );
     }
 
@@ -36,18 +38,17 @@ service cloud.firestore {
 
     // Entity Validations
     function isValidBlog(data) {
-      return data.keys().hasAll(['title', 'slug', 'content', 'authorId', 'status', 'createdAt', 'updatedAt'])
-        && data.keys().size() <= 10
-        && data.title is string && data.title.size() >= 5 && data.title.size() <= 150
-        && data.slug is string && data.slug.size() <= 150 && data.slug.matches('^[a-z0-9-]+$')
-        && data.content is string && data.content.size() >= 20 && data.content.size() <= 50000
-        && (!('excerpt' in data) || data.excerpt == null || (data.excerpt is string && data.excerpt.size() <= 300))
-        && (!('coverImage' in data) || data.coverImage == null || (data.coverImage is string && data.coverImage.size() <= 1000))
+      return data.keys().hasAll(['title', 'slug', 'content', 'authorId', 'status', 'updatedAt'])
+        && data.keys().size() <= 15
+        && data.title is string && data.title.size() >= 1 && data.title.size() <= 150
+        && data.slug is string && data.slug.size() <= 150
+        && data.content is string
+        && (!('excerpt' in data) || data.excerpt == null || data.excerpt is string)
+        && (!('coverImage' in data) || data.coverImage == null || data.coverImage is string)
         && (!('author' in data) || data.author is string)
         && data.authorId == request.auth.uid
         && data.status in ['published', 'draft']
-        && data.createdAt == (resource == null ? request.time : existing().createdAt)
-        && data.updatedAt == request.time;
+        && data.updatedAt != null;
     }
 
     function isValidComment(data) {
@@ -65,8 +66,7 @@ service cloud.firestore {
       
       allow create: if isAdmin() && isValidBlog(incoming());
       
-      allow update: if isAdmin() && isValidBlog(incoming())
-        && incoming().createdAt == existing().createdAt;
+      allow update: if isAdmin() && isValidBlog(incoming());
         
       allow delete: if isAdmin();
 
