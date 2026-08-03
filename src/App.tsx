@@ -26,6 +26,10 @@ import { CancellationPolicy } from './pages/CancellationPolicy';
 import { NotFound } from './pages/NotFound';
 import { ThankYou } from './pages/ThankYou';
 
+import { BlogList } from './pages/BlogList';
+import { BlogPost } from './pages/BlogPost';
+import { BlogAdmin } from './pages/BlogAdmin';
+
 export default function App() {
   return (
     <Router>
@@ -46,6 +50,9 @@ export default function App() {
             <Route path="/recreation" element={<Recreation />} />
             <Route path="/book" element={<Book />} />
             <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/blog" element={<BlogList />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/blogadmin" element={<BlogAdmin />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/cancellation-policy" element={<CancellationPolicy />} />

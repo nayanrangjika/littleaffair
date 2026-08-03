@@ -32,8 +32,8 @@ export function Book() {
     setIsSubmitting(true);
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-    const sheetWebhook = import.meta.env.VITE_GOOGLE_SHEETS_WEBHOOK_URL;
+    const accessKey = (import.meta as any).env.VITE_WEB3FORMS_ACCESS_KEY;
+    const sheetWebhook = (import.meta as any).env.VITE_GOOGLE_SHEETS_WEBHOOK_URL;
     
     // Consolidate multiple values (like checkboxes) into single strings
     const dataObj: Record<string, string> = {};

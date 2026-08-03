@@ -36,7 +36,7 @@ export function Footer() {
           <div className="lg:ml-auto">
             <h4 className="text-xs font-semibold tracking-[0.2em] mb-8 text-white uppercase font-serif border-b border-white/10 pb-4 inline-block">Explore</h4>
             <ul className="space-y-4">
-              {['About Us', 'STAY', 'EXPERIENCES & ADVENTURE', 'PLACES TO VISIT', 'RECREATION', 'DINING', 'GALLERY'].map((item, i) => {
+              {['About Us', 'STAY', 'EXPERIENCES & ADVENTURE', 'PLACES TO VISIT', 'RECREATION', 'DINING', 'GALLERY', 'BLOG'].map((item, i) => {
                  let path = '/' + item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
                  if (item === 'About Us') path = '/about';
                  return (

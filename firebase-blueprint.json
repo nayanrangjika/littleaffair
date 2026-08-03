@@ -1,0 +1,103 @@
+{
+  "entities": {
+    "blog": {
+      "title": "Blog Post",
+      "description": "A blog post entry.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title of the blog post.",
+          "minLength": 5,
+          "maxLength": 150
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL-friendly version of the title.",
+          "pattern": "^[a-z0-9-]+$",
+          "maxLength": 150
+        },
+        "content": {
+          "type": "string",
+          "description": "The markdown content of the blog post.",
+          "minLength": 20,
+          "maxLength": 50000
+        },
+        "excerpt": {
+          "type": "string",
+          "description": "A short summary of the blog post.",
+          "maxLength": 300
+        },
+        "coverImage": {
+          "type": "string",
+          "description": "URL of the cover image.",
+          "format": "uri"
+        },
+        "author": {
+          "type": "string",
+          "description": "Name of the author.",
+          "maxLength": 100
+        },
+        "authorId": {
+          "type": "string",
+          "description": "Firebase UID of the author."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the post was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the post was last updated."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["published", "draft"],
+          "description": "Publication status."
+        }
+      },
+      "required": ["title", "slug", "content", "authorId", "status", "createdAt", "updatedAt"]
+    },
+    "comment": {
+      "title": "Blog Comment",
+      "description": "A comment on a blog post.",
+      "type": "object",
+      "properties": {
+        "blogId": {
+          "type": "string",
+          "description": "ID of the blog post."
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Name of the commenter.",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "content": {
+          "type": "string",
+          "description": "The content of the comment.",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the comment was created."
+        }
+      },
+      "required": ["blogId", "authorName", "content", "createdAt"]
+    }
+  },
+  "firestore": {
+    "blogs": {
+      "schema": "blog",
+      "description": "Collection of blog posts."
+    },
+    "blogs/{blogId}/comments": {
+      "schema": "comment",
+      "description": "Sub-collection of comments for a specific blog post."
+    }
+  }
+}

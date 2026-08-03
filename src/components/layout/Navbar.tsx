@@ -15,6 +15,7 @@ const subMenuLinks = [
   { name: 'WEATHER', path: '/weather' },
   { name: 'DINING', path: '/dining' },
   { name: 'GALLERY', path: '/gallery' },
+  { name: 'BLOG', path: '/blog' },
 ];
 
 export function Navbar() {

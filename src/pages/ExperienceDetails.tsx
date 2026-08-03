@@ -153,7 +153,7 @@ export function ExperienceDetails() {
       <SEO 
         title={`${data.title} | Experiences at Little Affair Sariska`}
         description={data.shortDesc || `${data.title} at Little Affair Sariska in Rajasthan.`}
-        path={`/experiences/${slug}`}
+        path={`/experiences/${id}`}
         keywords={`${data.title}, Little Affair Sariska experiences, Sariska activities, Sariska resort`}
         ogImage={data.images && data.images[0] ? `https://www.littleaffairsariska.com${data.images[0]}` : undefined}
         jsonLd={{
