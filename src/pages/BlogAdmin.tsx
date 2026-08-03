@@ -28,7 +28,7 @@ export function BlogAdmin() {
   }, []);
 
   useEffect(() => {
-    if (!user || !user.email || !ADMIN_EMAILS.includes(user.email)) return;
+    if (!db || !user || !user.email || !ADMIN_EMAILS.includes(user.email)) return;
 
     const q = query(collection(db, 'blogs'), orderBy('createdAt', 'desc'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -72,6 +72,10 @@ export function BlogAdmin() {
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!db) {
+      alert("Database not initialized. Please check configuration.");
+      return;
+    }
     if (!currentPost?.title || !currentPost?.slug || !currentPost?.content) return;
 
     const postData = {
@@ -102,6 +106,10 @@ export function BlogAdmin() {
   };
 
   const handleDelete = async (id: string) => {
+    if (!db) {
+      alert("Database not initialized.");
+      return;
+    }
     if (window.confirm("Are you sure you want to delete this post?")) {
       await deleteDoc(doc(db, 'blogs', id));
     }

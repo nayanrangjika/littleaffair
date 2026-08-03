@@ -13,6 +13,11 @@ export function BlogList() {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
+    if (!db) {
+      setLoading(false);
+      return;
+    }
+
     const q = query(
       collection(db, 'blogs'),
       where('status', '==', 'published'),

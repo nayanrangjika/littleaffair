@@ -15,7 +15,7 @@ export function BlogPost() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!slug) return;
+    if (!db || !slug) return;
 
     const q = query(
       collection(db, 'blogs'),

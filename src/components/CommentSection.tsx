@@ -16,7 +16,7 @@ export function CommentSection({ blogId }: CommentSectionProps) {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (!blogId) return;
+    if (!db || !blogId) return;
 
     const q = query(
       collection(db, 'blogs', blogId, 'comments'),
@@ -36,6 +36,10 @@ export function CommentSection({ blogId }: CommentSectionProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!db) {
+      setError('Service unavailable. Please try again later.');
+      return;
+    }
     if (!newComment.authorName.trim() || !newComment.content.trim()) return;
 
     setIsSubmitting(true);
