@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
@@ -16,15 +16,27 @@ const firebaseConfig = {
   firestoreDatabaseId: import.meta.env.VITE_FIREBASE_DATABASE_ID || firebaseConfigLocal.firestoreDatabaseId,
 };
 
-const app = initializeApp(firebaseConfig);
+if (!firebaseConfig.apiKey && import.meta.env.PROD) {
+  console.error('Firebase API Key is missing. Please set VITE_FIREBASE_API_KEY in your Vercel environment variables.');
+}
 
-export const auth = getAuth(app);
-export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
-export const storage = getStorage(app);
+// Only initialize if we have at least an API key to avoid "auth/invalid-api-key" error
+const app = firebaseConfig.apiKey 
+  ? (getApps().length === 0 ? initializeApp(firebaseConfig) : getApp())
+  : null;
+
+if (!app && import.meta.env.PROD) {
+  console.error('Firebase configuration is missing! Please set VITE_FIREBASE_* environment variables in your deployment.');
+}
+
+export const auth = app ? getAuth(app) : null as any;
+export const db = app ? getFirestore(app, firebaseConfig.firestoreDatabaseId) : null as any;
+export const storage = app ? getStorage(app) : null as any;
 
 export const googleProvider = new GoogleAuthProvider();
 
 export const loginWithGoogle = async () => {
+  if (!auth) throw new Error('Firebase Auth not initialized');
   try {
     const result = await signInWithPopup(auth, googleProvider);
     return result.user;
@@ -34,4 +46,4 @@ export const loginWithGoogle = async () => {
   }
 };
 
-export const logout = () => signOut(auth);
+export const logout = () => auth ? signOut(auth) : Promise.resolve();
