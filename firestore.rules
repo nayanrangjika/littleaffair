@@ -41,8 +41,9 @@ service cloud.firestore {
         && data.title is string && data.title.size() >= 5 && data.title.size() <= 150
         && data.slug is string && data.slug.size() <= 150 && data.slug.matches('^[a-z0-9-]+$')
         && data.content is string && data.content.size() >= 20 && data.content.size() <= 50000
-        && (data.excerpt == null || (data.excerpt is string && data.excerpt.size() <= 300))
-        && (data.coverImage == null || (data.coverImage is string && data.coverImage.size() <= 1000))
+        && (!('excerpt' in data) || data.excerpt == null || (data.excerpt is string && data.excerpt.size() <= 300))
+        && (!('coverImage' in data) || data.coverImage == null || (data.coverImage is string && data.coverImage.size() <= 1000))
+        && (!('author' in data) || data.author is string)
         && data.authorId == request.auth.uid
         && data.status in ['published', 'draft']
         && data.createdAt == (resource == null ? request.time : existing().createdAt)
