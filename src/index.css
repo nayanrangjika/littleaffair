@@ -36,11 +36,11 @@ h1, h2, h3, h4, h5, h6 {
 .ql-editor h3 { @apply text-2xl mb-2 font-serif; }
 .ql-editor p { @apply mb-4 font-light leading-relaxed; }
 .ql-toolbar.ql-snow {
-  @apply border-none bg-gray-50 px-4 py-3 !important;
+  @apply !border-none bg-gray-50 px-4 py-3;
 }
 .ql-container.ql-snow {
-  @apply border-none !important;
+  @apply !border-none;
 }
 .ql-editor.ql-blank::before {
-  @apply text-gray-400 italic font-light !important;
+  @apply !text-gray-400 !italic !font-light;
 }
