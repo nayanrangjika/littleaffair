@@ -25,3 +25,22 @@ body {
 h1, h2, h3, h4, h5, h6 {
   @apply font-serif;
 }
+
+/* Quill Editor Overrides */
+.ql-editor {
+  @apply font-sans text-gray-900 min-h-[300px];
+}
+
+.ql-editor h1 { @apply text-4xl mb-4 font-serif; }
+.ql-editor h2 { @apply text-3xl mb-3 font-serif; }
+.ql-editor h3 { @apply text-2xl mb-2 font-serif; }
+.ql-editor p { @apply mb-4 font-light leading-relaxed; }
+.ql-toolbar.ql-snow {
+  @apply border-none bg-gray-50 px-4 py-3 !important;
+}
+.ql-container.ql-snow {
+  @apply border-none !important;
+}
+.ql-editor.ql-blank::before {
+  @apply text-gray-400 italic font-light !important;
+}

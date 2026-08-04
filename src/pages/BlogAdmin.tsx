@@ -4,7 +4,8 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Edit2, Trash2, Save, X, Image as ImageIcon, CheckCircle2, Lock, LogOut, ChevronLeft, Eye, EyeOff } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import { db, auth, storage, loginWithGoogle, logout } from '../lib/firebase';
 import { BlogPost } from '../types/blog';
 
@@ -69,6 +70,32 @@ export function BlogAdmin() {
       }
     );
   };
+
+  const quillModules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'script': 'sub'}, { 'script': 'super' }],
+      [{ 'indent': '-1'}, { 'indent': '+1' }],
+      [{ 'direction': 'rtl' }],
+      [{ 'color': [] }, { 'background': [] }],
+      ['link', 'image', 'video'],
+      ['clean']
+    ],
+  };
+
+  const quillFormats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike',
+    'list', 'bullet',
+    'script', 'sub', 'super',
+    'indent',
+    'direction',
+    'color', 'background',
+    'link', 'image', 'video',
+    'clean'
+  ];
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -324,19 +351,18 @@ export function BlogAdmin() {
                 </div>
 
                 <div className="flex flex-col gap-8 h-full">
-                  <div className="flex-grow flex flex-col min-h-[400px]">
-                    <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Story Content (Markdown)</label>
-                    <div className="flex-grow grid grid-rows-2 gap-4">
-                      <textarea 
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Story Content</label>
+                    <div className="bg-white border border-gray-100 rounded-3xl overflow-hidden min-h-[450px] flex flex-col shadow-inner">
+                      <ReactQuill 
+                        theme="snow"
                         value={currentPost?.content || ''}
-                        onChange={(e) => setCurrentPost({ ...currentPost, content: e.target.value })}
-                        className="w-full px-6 py-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-accent transition-all text-gray-900 resize-none font-mono text-sm leading-relaxed"
-                        placeholder="Write your story here using Markdown..."
-                        required
-                      ></textarea>
-                      <div className="w-full px-6 py-4 bg-gray-900 rounded-2xl text-gray-300 overflow-y-auto prose prose-invert prose-sm">
-                        <ReactMarkdown>{currentPost?.content || '*Preview will appear here*'}</ReactMarkdown>
-                      </div>
+                        onChange={(content) => setCurrentPost({ ...currentPost, content })}
+                        modules={quillModules}
+                        formats={quillFormats}
+                        className="flex-grow flex flex-col"
+                        style={{ minHeight: '400px' }}
+                      />
                     </div>
                   </div>
 

@@ -51,7 +51,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
         </h3>
         
         <p className="text-gray-600 font-light mb-6 line-clamp-3 flex-grow">
-          {post.excerpt || post.content.substring(0, 150).replace(/[#*`]/g, '') + '...'}
+          {post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 150) + '...'}
         </p>
         
         <Link 

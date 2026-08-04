@@ -3,7 +3,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { collection, query, where, limit, onSnapshot } from 'firebase/firestore';
 import { motion } from 'motion/react';
 import { Calendar, User, ArrowLeft, Share2, Globe, Send, Link as LinkIcon, ChevronRight } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
+import DOMPurify from 'dompurify';
 import { db } from '../lib/firebase';
 import { BlogPost as IBlogPost } from '../types/blog';
 import { SEO } from '../components/SEO';
@@ -127,9 +127,10 @@ export function BlogPost() {
             </button>
           </div>
 
-          <div className="prose prose-lg md:prose-xl prose-accent max-w-none prose-headings:font-serif prose-headings:font-normal prose-p:font-light prose-p:text-gray-600 prose-p:leading-relaxed prose-img:rounded-3xl prose-blockquote:border-accent prose-blockquote:bg-accent/5 prose-blockquote:py-2 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
-          </div>
+          <div 
+            className="prose prose-lg md:prose-xl prose-accent max-w-none prose-headings:font-serif prose-headings:font-normal prose-p:font-light prose-p:text-gray-600 prose-p:leading-relaxed prose-img:rounded-3xl prose-blockquote:border-accent prose-blockquote:bg-accent/5 prose-blockquote:py-2 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl"
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
+          />
         </div>
       </section>
 
