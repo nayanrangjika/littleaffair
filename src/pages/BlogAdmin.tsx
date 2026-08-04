@@ -3,11 +3,11 @@ import { collection, query, orderBy, onSnapshot, addDoc, updateDoc, deleteDoc, d
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Edit2, Trash2, Save, X, Image as ImageIcon, CheckCircle2, Lock, LogOut, ChevronLeft, Eye, EyeOff } from 'lucide-react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import { Plus, Edit2, Trash2, Save, X, Image as ImageIcon, CheckCircle2, Lock, LogOut, ChevronLeft, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { db, auth, storage, loginWithGoogle, logout } from '../lib/firebase';
 import { BlogPost } from '../types/blog';
+
+const Editor = React.lazy(() => import('../components/Editor'));
 
 const ADMIN_EMAILS = ['nayanasdf1234@gmail.com', 'Info@littleaffairsariska.com'];
 
@@ -21,6 +21,10 @@ export function BlogAdmin() {
   const [uploadProgress, setUploadProgress] = useState(0);
 
   useEffect(() => {
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
     const unsubscribe = onAuthStateChanged(auth, (u) => {
       setUser(u);
       setLoading(false);
@@ -70,32 +74,6 @@ export function BlogAdmin() {
       }
     );
   };
-
-  const quillModules = {
-    toolbar: [
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'script': 'sub'}, { 'script': 'super' }],
-      [{ 'indent': '-1'}, { 'indent': '+1' }],
-      [{ 'direction': 'rtl' }],
-      [{ 'color': [] }, { 'background': [] }],
-      ['link', 'image', 'video'],
-      ['clean']
-    ],
-  };
-
-  const quillFormats = [
-    'header',
-    'bold', 'italic', 'underline', 'strike',
-    'list', 'bullet',
-    'script', 'sub', 'super',
-    'indent',
-    'direction',
-    'color', 'background',
-    'link', 'image', 'video',
-    'clean'
-  ];
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -354,15 +332,16 @@ export function BlogAdmin() {
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Story Content</label>
                     <div className="bg-white border border-gray-100 rounded-3xl overflow-hidden min-h-[450px] flex flex-col shadow-inner">
-                      <ReactQuill 
-                        theme="snow"
-                        value={currentPost?.content || ''}
-                        onChange={(content) => setCurrentPost({ ...currentPost, content })}
-                        modules={quillModules}
-                        formats={quillFormats}
-                        className="flex-grow flex flex-col"
-                        style={{ minHeight: '400px' }}
-                      />
+                      <React.Suspense fallback={
+                        <div className="flex-grow flex items-center justify-center bg-gray-50">
+                          <Loader2 className="w-8 h-8 text-accent animate-spin" />
+                        </div>
+                      }>
+                        <Editor 
+                          value={currentPost?.content || ''}
+                          onChange={(content) => setCurrentPost({ ...currentPost, content })}
+                        />
+                      </React.Suspense>
                     </div>
                   </div>
 
