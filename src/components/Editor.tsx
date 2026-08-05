@@ -10,7 +10,8 @@ interface EditorProps {
 const quillModules = {
   toolbar: [
     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    ['bold', 'italic', 'underline', 'strike'],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
+    [{ 'align': [] }],
     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
     [{ 'script': 'sub'}, { 'script': 'super' }],
     [{ 'indent': '-1'}, { 'indent': '+1' }],
@@ -19,11 +20,15 @@ const quillModules = {
     ['link', 'image', 'video'],
     ['clean']
   ],
+  clipboard: {
+    matchVisual: false
+  }
 };
 
 const quillFormats = [
   'header',
-  'bold', 'italic', 'underline', 'strike',
+  'bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block',
+  'align',
   'list', 'bullet',
   'script', 'sub', 'super',
   'indent',

@@ -85,7 +85,7 @@ export function BlogAdmin() {
 
     const postData = {
       ...currentPost,
-      author: user?.displayName || 'Little Affair Team',
+      author: 'Little Affair Sariska',
       authorId: user?.uid,
       updatedAt: serverTimestamp(),
       status: currentPost.status || 'draft',

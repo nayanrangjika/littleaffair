@@ -42,7 +42,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
           </span>
           <span className="flex items-center gap-1">
             <User className="w-3 h-3" />
-            {post.author}
+            Little Affair Sariska
           </span>
         </div>
         
@@ -51,7 +51,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
         </h3>
         
         <p className="text-gray-600 font-light mb-6 line-clamp-3 flex-grow">
-          {post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 150) + '...'}
+          {post.excerpt || post.content.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/<[^>]*>/g, '').substring(0, 150) + '...'}
         </p>
         
         <Link 

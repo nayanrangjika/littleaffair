@@ -44,3 +44,29 @@ h1, h2, h3, h4, h5, h6 {
 .ql-editor.ql-blank::before {
   @apply !text-gray-400 !italic !font-light;
 }
+
+/* Fix Tailwind breaking Quill Toolbar Dropdowns & SVGs */
+.ql-toolbar .ql-picker-label {
+  display: flex !important;
+  align-items: center !important;
+}
+.ql-toolbar .ql-picker-label svg {
+  vertical-align: baseline !important;
+  display: inline-block !important;
+}
+.ql-toolbar .ql-picker-options {
+  z-index: 50 !important;
+}
+
+/* Quill Text Alignment & Indent utility classes for frontend display */
+.ql-align-center { text-align: center !important; }
+.ql-align-right { text-align: right !important; }
+.ql-align-justify { text-align: justify !important; }
+.ql-indent-1 { padding-left: 3em !important; }
+.ql-indent-2 { padding-left: 6em !important; }
+.ql-indent-3 { padding-left: 9em !important; }
+.ql-indent-4 { padding-left: 12em !important; }
+.ql-indent-5 { padding-left: 15em !important; }
+.ql-indent-6 { padding-left: 18em !important; }
+.ql-indent-7 { padding-left: 21em !important; }
+.ql-indent-8 { padding-left: 24em !important; }

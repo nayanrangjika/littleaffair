@@ -1,6 +1,6 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, initializeFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 const configs = import.meta.glob('../../firebase-applet-config.json', { eager: true, import: 'default' });
 const firebaseConfigLocal = (Object.values(configs)[0] || {}) as any;
@@ -29,8 +29,21 @@ if (!app && import.meta.env.PROD) {
   console.error('Firebase configuration is missing! Please set VITE_FIREBASE_* environment variables in your deployment.');
 }
 
+let dbInstance;
+if (app) {
+  try {
+    // Attempt to initialize with specific settings
+    dbInstance = initializeFirestore(app, { 
+      experimentalForceLongPolling: true 
+    }, firebaseConfig.firestoreDatabaseId || '(default)');
+  } catch (e) {
+    // If it fails (usually because it was already initialized during hot-reload), get the existing instance
+    dbInstance = getFirestore(app, firebaseConfig.firestoreDatabaseId || '(default)');
+  }
+}
+
 export const auth = app ? getAuth(app) : null as any;
-export const db = app ? getFirestore(app, firebaseConfig.firestoreDatabaseId) : null as any;
+export const db = dbInstance || null as any;
 export const storage = app ? getStorage(app) : null as any;
 
 export const googleProvider = new GoogleAuthProvider();
