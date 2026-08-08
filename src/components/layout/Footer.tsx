@@ -108,7 +108,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between border-t border-white/10 pt-8 mt-16">
           <p className="text-xs text-gray-500 font-light mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Little Affair Sariska. All Rights Reserved.
+            &copy; {new Date().getFullYear()} @Gaura Hospitality. All Right Reserved.
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-xs text-gray-500 font-light">
              <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>

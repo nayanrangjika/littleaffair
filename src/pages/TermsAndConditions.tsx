@@ -22,7 +22,7 @@ export function TermsAndConditions() {
             <p className="text-sm text-gray-400">Last updated: July 18, 2026</p>
             
             <p>
-              Welcome to <strong>Little Affair Sariska</strong>!
+              Welcome to <strong>Little Affair Sariska (A Unit of Gaura Hospitality)</strong>!
             </p>
             <p>
               These terms and conditions outline the rules and regulations for the use of Little Affair Sariska's Website and resort services, located at Village Ghewar, Tehla, Rajgarh, Rajasthan 301410.

@@ -82,7 +82,7 @@ export function About() {
                   />
                   <div className="absolute -bottom-8 -left-8 bg-accent text-white p-8 rounded-[2rem] shadow-xl max-w-[250px] hidden md:block">
                     <MapPin className="w-8 h-8 mb-4" />
-                    <p className="font-serif text-xl">Nestled in the heart of Sariska</p>
+                    <p className="font-serif text-xl">A Unit of Gaura Hospitality</p>
                   </div>
                 </div>
               </div>

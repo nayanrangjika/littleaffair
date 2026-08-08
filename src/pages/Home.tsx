@@ -83,7 +83,7 @@ export function Home() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl font-light mb-12 drop-shadow-md text-white/90"
           >
-            The Jungle Lodge
+            A Unit of Gaura Hospitality
           </motion.p>
           
           <motion.div 

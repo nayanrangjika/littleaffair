@@ -22,7 +22,7 @@ export function PrivacyPolicy() {
             <p className="text-sm text-gray-400">Last updated: July 18, 2026</p>
             
             <p>
-              At <strong>Little Affair Sariska</strong>, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Little Affair Sariska and how we use it.
+              At <strong>Little Affair Sariska (A Unit of Gaura Hospitality)</strong>, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Little Affair Sariska and how we use it.
             </p>
 
             <h2 className="text-2xl font-serif text-gray-900 pt-4">1. Information We Collect</h2>

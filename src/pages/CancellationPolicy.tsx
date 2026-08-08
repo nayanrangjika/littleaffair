@@ -22,7 +22,7 @@ export function CancellationPolicy() {
             <p className="text-sm text-gray-400">Last updated: July 18, 2026</p>
             
             <p>
-              Thank you for choosing <strong>Little Affair Sariska</strong>. We understand that travel plans can change. Below are our standard cancellation and refund guidelines to ensure transparency and fairness.
+              Thank you for choosing <strong>Little Affair Sariska (A Unit of Gaura Hospitality)</strong>. We understand that travel plans can change. Below are our standard cancellation and refund guidelines to ensure transparency and fairness.
             </p>
 
             <h2 className="text-2xl font-serif text-gray-900 pt-4">1. Cancellation Timeline & Fees</h2>
