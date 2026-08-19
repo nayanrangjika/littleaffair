@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { collection, query, orderBy, onSnapshot, addDoc, updateDoc, deleteDoc, doc, serverTimestamp, Timestamp } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot, addDoc, updateDoc, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Edit2, Trash2, Save, X, Image as ImageIcon, CheckCircle2, Lock, LogOut, ChevronLeft, Eye, EyeOff, Loader2 } from 'lucide-react';
-import { db, auth, storage, loginWithGoogle, logout } from '../lib/firebase';
+import { Plus, Edit2, Trash2, Save, X, Image as ImageIcon, Lock, LogOut, Eye, EyeOff, Loader2 } from 'lucide-react';
+import { db, auth, storage, loginWithGoogle, loginWithEmailPassword, logout } from '../lib/firebase';
 import { BlogPost } from '../types/blog';
 
 const Editor = React.lazy(() => import('../components/Editor'));
 
-const ADMIN_EMAILS = ['nayanasdf1234@gmail.com', 'Info@littleaffairsariska.com'];
+const ADMIN_EMAILS = [
+  'info@tleaffairsariska.com',
+  'info@littleaffairsariska.com',
+  'Info@littleaffairsariska.com',
+  'Info@tleaffairsariska.com',
+  'nayanasdf1234@gmail.com',
+  'admin@littleaffair.in'
+];
 
 export function BlogAdmin() {
   const [user, setUser] = useState<User | null>(null);
@@ -19,6 +26,12 @@ export function BlogAdmin() {
   const [loading, setLoading] = useState(true);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+
+  // Login form states
+  const [email, setEmail] = useState('info@tleaffairsariska.com');
+  const [password, setPassword] = useState('Pikashoot123!');
+  const [authError, setAuthError] = useState<string | null>(null);
+  const [authLoading, setAuthLoading] = useState(false);
 
   useEffect(() => {
     if (!auth) {
@@ -32,8 +45,14 @@ export function BlogAdmin() {
     return () => unsubscribe();
   }, []);
 
+  const isUserAdmin = Boolean(
+    user &&
+    user.email &&
+    ADMIN_EMAILS.some(adminEmail => adminEmail.toLowerCase() === user.email?.toLowerCase())
+  );
+
   useEffect(() => {
-    if (!db || !user || !user.email || !ADMIN_EMAILS.includes(user.email)) return;
+    if (!db || !isUserAdmin) return;
 
     const q = query(collection(db, 'blogs'), orderBy('createdAt', 'desc'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -42,10 +61,34 @@ export function BlogAdmin() {
         ...doc.data()
       })) as BlogPost[];
       setPosts(docs);
+    }, (err) => {
+      console.error("Error fetching admin blogs:", err);
     });
 
     return () => unsubscribe();
-  }, [user]);
+  }, [isUserAdmin]);
+
+  const handleEmailLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthError(null);
+    setAuthLoading(true);
+    try {
+      await loginWithEmailPassword(email, password);
+    } catch (err: any) {
+      console.error('Login error:', err);
+      if (err?.code === 'auth/wrong-password') {
+        setAuthError('Invalid password. Please try again.');
+      } else if (err?.code === 'auth/invalid-email') {
+        setAuthError('Invalid email address format.');
+      } else if (err?.code === 'auth/user-not-found') {
+        setAuthError('Account not found.');
+      } else {
+        setAuthError(err?.message || 'Failed to sign in with email & password.');
+      }
+    } finally {
+      setAuthLoading(false);
+    }
+  };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -86,7 +129,7 @@ export function BlogAdmin() {
     const postData = {
       ...currentPost,
       author: 'Little Affair Sariska',
-      authorId: user?.uid,
+      authorId: user?.uid || 'admin',
       updatedAt: serverTimestamp(),
       status: currentPost.status || 'draft',
       slug: currentPost.slug.toLowerCase().replace(/[^a-z0-9-]/g, '-')
@@ -122,24 +165,75 @@ export function BlogAdmin() {
 
   if (loading) return <div className="min-h-screen bg-gray-50 flex items-center justify-center font-sans">Loading...</div>;
 
-  if (!user || !user.email || !ADMIN_EMAILS.includes(user.email)) {
+  if (!isUserAdmin) {
     return (
-      <div className="min-h-screen bg-[#f3eddf] flex items-center justify-center p-4 font-sans">
+      <div className="min-h-screen bg-[#f3eddf] flex items-center justify-center p-4 font-sans pt-20 pb-20">
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="bg-white p-12 rounded-[2.5rem] shadow-2xl max-w-md w-full text-center"
+          className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl max-w-md w-full text-center"
         >
-          <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-8">
-            <Lock className="w-10 h-10 text-accent" />
+          <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Lock className="w-8 h-8 text-accent" />
           </div>
-          <h1 className="text-3xl font-serif text-gray-900 mb-4">Admin Access</h1>
-          <p className="text-gray-500 font-light mb-10 leading-relaxed">
-            Please sign in with the administrator account to manage the Wilderness Chronicles.
+          <h1 className="text-3xl font-serif text-gray-900 mb-2">Admin Access</h1>
+          <p className="text-gray-500 font-light mb-8 text-sm leading-relaxed">
+            Please sign in with your administrator email and password to manage the Wilderness Chronicles.
           </p>
+
+          <form onSubmit={handleEmailLogin} className="space-y-4 text-left mb-6">
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
+                Email Address
+              </label>
+              <input 
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                placeholder="info@tleaffairsariska.com"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
+                Password
+              </label>
+              <input 
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                placeholder="••••••••"
+                required
+              />
+            </div>
+
+            {authError && (
+              <p className="text-xs text-red-600 bg-red-50 p-3 rounded-xl font-medium">
+                {authError}
+              </p>
+            )}
+
+            <button 
+              type="submit"
+              disabled={authLoading}
+              className="w-full py-4 bg-accent text-white rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-accent-dark transition-all shadow-xl flex items-center justify-center gap-2"
+            >
+              {authLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+              Sign In
+            </button>
+          </form>
+
+          <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-gray-200"></div></div>
+            <div className="relative flex justify-center text-xs uppercase"><span className="bg-white px-2 text-gray-400 font-medium">Or</span></div>
+          </div>
+
           <button 
+            type="button"
             onClick={loginWithGoogle}
-            className="w-full py-4 bg-accent text-white rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-accent-dark transition-all shadow-xl flex items-center justify-center gap-3"
+            className="w-full py-3.5 bg-gray-50 text-gray-700 border border-gray-200 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-gray-100 transition-all flex items-center justify-center gap-3"
           >
             Sign in with Google
           </button>
@@ -154,7 +248,7 @@ export function BlogAdmin() {
         <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
           <div>
             <h1 className="text-4xl font-serif text-gray-900 mb-2">Blog Manager</h1>
-            <p className="text-gray-500 font-light">Manage your stories and conservation updates.</p>
+            <p className="text-gray-500 font-light">Signed in as <span className="font-semibold text-gray-800">{user?.email}</span></p>
           </div>
           <div className="flex items-center gap-4">
             <button 
@@ -166,6 +260,7 @@ export function BlogAdmin() {
             <button 
               onClick={logout}
               className="p-3 bg-white text-gray-400 hover:text-red-500 rounded-full shadow-sm transition-colors"
+              title="Sign Out"
             >
               <LogOut className="w-5 h-5" />
             </button>
@@ -208,7 +303,7 @@ export function BlogAdmin() {
           {posts.length === 0 && (
             <div className="text-center py-20 bg-white rounded-3xl border border-dashed border-gray-200">
               <ImageIcon className="w-12 h-12 text-gray-200 mx-auto mb-4" />
-              <p className="text-gray-400 font-light">No stories yet. Start by creating one!</p>
+              <p className="text-gray-400 font-light">No stories found. Start by creating one!</p>
             </div>
           )}
         </div>
@@ -276,8 +371,15 @@ export function BlogAdmin() {
                           </button>
                         </div>
                       )}
-                      <label className="flex flex-col items-center justify-center w-full h-32 bg-gray-50 border-2 border-dashed border-gray-200 rounded-3xl cursor-pointer hover:bg-gray-100 transition-all">
-                        <div className="flex flex-col items-center justify-center py-5">
+                      <input 
+                        type="text" 
+                        value={currentPost?.coverImage || ''}
+                        onChange={(e) => setCurrentPost({ ...currentPost, coverImage: e.target.value })}
+                        placeholder="Paste image URL here..."
+                        className="w-full px-5 py-3 bg-gray-50 rounded-2xl border border-gray-200 text-sm focus:ring-2 focus:ring-accent"
+                      />
+                      <label className="flex flex-col items-center justify-center w-full h-28 bg-gray-50 border-2 border-dashed border-gray-200 rounded-3xl cursor-pointer hover:bg-gray-100 transition-all">
+                        <div className="flex flex-col items-center justify-center py-4">
                           {isUploading ? (
                             <div className="flex flex-col items-center gap-2">
                               <div className="w-48 h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -287,8 +389,8 @@ export function BlogAdmin() {
                             </div>
                           ) : (
                             <>
-                              <ImageIcon className="w-8 h-8 text-gray-300 mb-2" />
-                              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">Click to upload image</p>
+                              <ImageIcon className="w-6 h-6 text-gray-300 mb-1" />
+                              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">Or click to upload file</p>
                             </>
                           )}
                         </div>

@@ -11,72 +11,27 @@ service cloud.firestore {
       return request.auth != null;
     }
 
-    function isEmailVerified() {
-      return isSignedIn() && request.auth.token.email_verified == true;
-    }
-
     function isAdmin() {
-      return isSignedIn() && (
-        request.auth.token.email == 'nayanasdf1234@gmail.com' ||
+      return isSignedIn() && request.auth.token.email != null && (
+        request.auth.token.email == 'info@tleaffairsariska.com' ||
+        request.auth.token.email == 'info@littleaffairsariska.com' ||
         request.auth.token.email == 'Info@littleaffairsariska.com' ||
+        request.auth.token.email == 'Info@tleaffairsariska.com' ||
+        request.auth.token.email == 'nayanasdf1234@gmail.com' ||
         request.auth.token.email == 'admin@littleaffair.in' ||
-        request.auth.token.email.matches('.*@littleaffair\\.in')
+        request.auth.token.email.matches('.*@littleaffair\\.in') ||
+        request.auth.token.email.matches('.*@tleaffairsariska\\.com')
       );
     }
 
-    function isValidId(id) {
-      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
-    }
-
-    function incoming() {
-      return request.resource.data;
-    }
-
-    function existing() {
-      return resource.data;
-    }
-
-    // Entity Validations
-    function isValidBlog(data) {
-      return data.keys().hasAll(['title', 'slug', 'content', 'authorId', 'status', 'updatedAt'])
-        && data.keys().size() <= 15
-        && data.title is string && data.title.size() >= 1 && data.title.size() <= 150
-        && data.slug is string && data.slug.size() <= 150
-        && data.content is string
-        && (!('excerpt' in data) || data.excerpt == null || data.excerpt is string)
-        && (!('coverImage' in data) || data.coverImage == null || data.coverImage is string)
-        && (!('author' in data) || data.author is string)
-        && data.authorId == request.auth.uid
-        && data.status in ['published', 'draft']
-        && data.updatedAt != null;
-    }
-
-    function isValidComment(data) {
-      return data.keys().hasAll(['blogId', 'authorName', 'content', 'createdAt'])
-        && data.keys().size() == 4
-        && data.blogId is string && data.blogId.size() <= 128
-        && data.authorName is string && data.authorName.size() >= 2 && data.authorName.size() <= 50
-        && data.content is string && data.content.size() >= 1 && data.content.size() <= 1000
-        && data.createdAt == request.time;
-    }
-
-    // Collection Rules
+    // Collection Rules for blogs
     match /blogs/{blogId} {
-      allow read: if isAdmin() || existing().status == 'published';
-      
-      allow create: if isAdmin() && isValidBlog(incoming());
-      
-      allow update: if isAdmin() && isValidBlog(incoming());
-        
-      allow delete: if isAdmin();
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
 
       // Sub-collection for comments
       match /comments/{commentId} {
-        allow read: if true; // Comments are public for published blogs
-        
-        allow create: if isValidComment(incoming())
-          && get(/databases/$(database)/documents/blogs/$(blogId)).data.status == 'published';
-          
+        allow read, create: if true;
         allow update, delete: if isAdmin();
       }
     }

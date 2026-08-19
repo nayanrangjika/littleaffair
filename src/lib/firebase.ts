@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, initializeFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 const configs = import.meta.glob('../../firebase-applet-config.json', { eager: true, import: 'default' });
@@ -55,6 +55,29 @@ export const loginWithGoogle = async () => {
     return result.user;
   } catch (error) {
     console.error('Login error:', error);
+    throw error;
+  }
+};
+
+export const loginWithEmailPassword = async (email: string, pass: string) => {
+  if (!auth) throw new Error('Firebase Auth not initialized');
+  const cleanEmail = email.trim();
+  try {
+    const result = await signInWithEmailAndPassword(auth, cleanEmail, pass);
+    return result.user;
+  } catch (error: any) {
+    if (
+      error?.code === 'auth/user-not-found' ||
+      error?.code === 'auth/invalid-credential' ||
+      error?.code === 'auth/invalid-email'
+    ) {
+      try {
+        const createResult = await createUserWithEmailAndPassword(auth, cleanEmail, pass);
+        return createResult.user;
+      } catch (createErr) {
+        throw error;
+      }
+    }
     throw error;
   }
 };
