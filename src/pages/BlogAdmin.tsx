@@ -191,7 +191,7 @@ export function BlogAdmin() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
-                placeholder="info@tleaffairsariska.com"
+                placeholder="info@littleaffairsariska.com"
                 required
               />
             </div>
