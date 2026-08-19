@@ -28,8 +28,8 @@ export function BlogAdmin() {
   const [uploadProgress, setUploadProgress] = useState(0);
 
   // Login form states
-  const [email, setEmail] = useState('info@tleaffairsariska.com');
-  const [password, setPassword] = useState('Pikashoot123!');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState<string | null>(null);
   const [authLoading, setAuthLoading] = useState(false);
 
@@ -204,7 +204,6 @@ export function BlogAdmin() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
-                placeholder="••••••••"
                 required
               />
             </div>
