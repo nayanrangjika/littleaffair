@@ -22,16 +22,16 @@ function FadeIn({ children, delay = 0, className, direction = "up" }: { children
 }
 
 const galleryImages = [
-  { src: '/stay/i.jpg', category: 'indoor' },
-  { src: '/stay/i.png', category: 'indoor' },
-  { src: '/stay/i1.jpg', category: 'indoor' },
-  { src: '/stay/i4.png', category: 'indoor' },
-  { src: '/stay/i6.png', category: 'indoor' },
-  { src: '/stay/o.jpg', category: 'outdoor' },
-  { src: '/stay/o.png', category: 'outdoor' },
-  { src: '/stay/o2.png', category: 'outdoor' },
-  { src: '/stay/o3.jpg', category: 'outdoor' },
-  { src: '/stay/o5.png', category: 'outdoor' },
+  { src: '/stay/indoor/AM1_2243-HDR.jpg', category: 'indoor' },
+  { src: '/stay/indoor/AM1_2258-HDR.jpg', category: 'indoor' },
+  { src: '/stay/indoor/AM1_2288-HDR.jpg', category: 'indoor' },
+  { src: '/stay/indoor/IMG_7773.PNG', category: 'indoor' },
+  { src: '/stay/indoor/IMG_7774.PNG', category: 'indoor' },
+  { src: '/stay/indoor/IMG_7775.PNG', category: 'indoor' },
+  { src: '/stay/indoor/IMG_7776.PNG', category: 'indoor' },
+  { src: '/stay/indoor/IMG_7779.PNG', category: 'indoor' },
+  { src: '/stay/outdoor/IMG_7786.PNG', category: 'outdoor' },
+  { src: '/stay/outdoor/IMG_7787.PNG', category: 'outdoor' },
 ];
 
 export function Stay() {
@@ -129,7 +129,7 @@ export function Stay() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row gap-16 items-center mb-32">
             <FadeIn direction="right" className="flex-1">
-              <img src="/stay/open shower.jpg" alt="Open Shower" className="rounded-[3rem] shadow-2xl object-cover w-full h-[500px]" />
+              <img src="/stay/indoor/AM1_2288-HDR.jpg" alt="Open Shower" className="rounded-[3rem] shadow-2xl object-cover w-full h-[500px]" />
             </FadeIn>
             <FadeIn direction="left" className="flex-1">
               <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Open Shower</h2>
@@ -141,7 +141,7 @@ export function Stay() {
 
           <div className="flex flex-col md:flex-row-reverse gap-16 items-center">
             <FadeIn direction="left" className="flex-1">
-              <img src="/stay/private villas.jpg" alt="Private Villas" className="rounded-[3rem] shadow-2xl object-cover w-full h-[500px]" />
+              <img src="/stay/indoor/AM1_2243-HDR.jpg" alt="Private Villas" className="rounded-[3rem] shadow-2xl object-cover w-full h-[500px]" />
             </FadeIn>
             <FadeIn direction="right" className="flex-1 md:text-right">
               <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Private Villas</h2>

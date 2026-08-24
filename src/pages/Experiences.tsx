@@ -23,6 +23,12 @@ function FadeIn({ children, delay = 0, className, direction = "up" }: { children
 
 const experiences = [
   {
+    title: "Leopard Trail",
+    description: "Take a journey into the nearby buffer forests of Sariska Tiger Reserve where wilderness meets rustic charm, complete with a local safari expert and a leisurely high tea.",
+    icon: Compass,
+    image: "/experiences/leopard trail.jpg"
+  },
+  {
     title: "High Tea by the Boulders",
     description: "Soak in the breathtaking views on the boulders accompanied by delicious food and a leisurely setting just for you.",
     icon: Coffee,

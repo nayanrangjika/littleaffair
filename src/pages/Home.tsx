@@ -253,7 +253,7 @@ export function Home() {
           <div className="flex flex-col md:flex-row-reverse gap-8 md:gap-16 items-center">
             <FadeIn direction="left" className="flex-1 w-full relative">
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
-                <img src="/homepage/recreation.jpg" alt="Recreation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
+                <img src="/recreation/AM1_2302-HDR.jpeg" alt="Recreation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
               </div>
             </FadeIn>
             <div className="flex-1 max-w-xl md:text-right flex flex-col md:items-end">
@@ -325,12 +325,24 @@ export function Home() {
         <div className="relative max-w-[100vw] overflow-x-hidden">
           <div className="flex gap-4 px-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8">
             {[
-              '/experiences/sariska jungle safari.jpg',
-              '/homepage/dinning.png',
-              '/stay/o3.jpg',
-              '/stay/i4.png',
-              '/experiences/Special Setup.jpg',
-              '/safari.jpg'
+              "/home_carousel/IMG_7754.PNG",
+              "/home_carousel/IMG_7756.PNG",
+              "/home_carousel/IMG_7759.PNG",
+              "/home_carousel/IMG_7760.PNG",
+              "/home_carousel/IMG_7761.PNG",
+              "/home_carousel/IMG_7766.PNG",
+              "/home_carousel/IMG_7774.PNG",
+              "/home_carousel/IMG_7776.PNG",
+              "/home_carousel/IMG_7791.PNG",
+              "/home_carousel/IMG_7798.PNG",
+              "/home_carousel/IMG_7800.PNG",
+              "/home_carousel/IMG_7801.PNG",
+              "/home_carousel/IMG_7804.PNG",
+              "/home_carousel/IMG_7805.PNG",
+              "/home_carousel/IMG_7807.PNG",
+              "/home_carousel/IMG_7809.PNG",
+              "/home_carousel/IMG_7813.PNG",
+              "/home_carousel/IMG_7823.PNG"
             ].map((src, i) => (
               <div key={i} className="w-[80vw] sm:w-[45vw] md:w-[30vw] lg:w-[22vw] aspect-[4/3] rounded-2xl overflow-hidden shadow-xl snap-center shrink-0">
                 <img src={src} alt="Gallery" className="w-full h-full object-cover" />

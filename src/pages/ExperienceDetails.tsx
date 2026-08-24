@@ -22,6 +22,27 @@ function FadeIn({ children, delay = 0, className, direction = "up" }: { children
 }
 
 const experienceData: Record<string, any> = {
+  "leopard-trail": {
+    title: "Leopard Trail",
+    location: "Sariska, Alwar",
+    shortDesc: "Our Leopard Trail takes you into the nearby buffer forests of Sariska Tiger Reserve, where the wilderness meets the rustic charm of rural Sariska.",
+    stats: [
+      { label: "2-6 Guests Max", icon: Users },
+      { label: "Duration: 90-100 Minutes", icon: Clock },
+      { label: "Leisurely High Tea", icon: Coffee },
+      { label: "Local Safari Expert Guide", icon: Info }
+    ],
+    desc1: "At Little Affair, we take you beyond the usual safari experience. Our Leopard Trail takes you into the nearby buffer forests of Sariska Tiger Reserve, where the wilderness meets the rustic charm of rural Sariska.",
+    desc2: "The trail lasts around 90–100 minutes, accompanied by our local safari expert who helps you discover the forest, its stories, and its inhabitants. Along the way, you may encounter a majestic nilgai, a wild boar, peacocks and other wildlife—and, if luck is on your side, the elusive leopard of Sariska.",
+    desc3: "The experience is made even more special with a leisurely high tea, allowing you to pause, soak in the surroundings and enjoy the simple beauty of the forest and countryside.",
+    desc4: "A little adventure, a little wilderness, and a lovely little affair with Sariska.",
+    images: [
+      "/leopard trail.jpg",
+      "/leopard trail1.jpg",
+      "/leopard trail2.jpg",
+      "/leopard trail3.jpg"
+    ]
+  },
   "high-tea-by-the-boulders": {
     title: "High Tea by the Boulders",
     location: "Sariska, Alwar",
@@ -225,6 +246,7 @@ export function ExperienceDetails() {
               <p className="mb-6 leading-loose">{data.desc1}</p>
               <p className="mb-6 leading-loose">{data.desc2}</p>
               {data.desc3 && <p className="mb-6 leading-loose">{data.desc3}</p>}
+              {data.desc4 && <p className="mb-6 leading-loose">{data.desc4}</p>}
             </div>
           </FadeIn>
         </div>

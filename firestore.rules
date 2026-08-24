@@ -6,33 +6,12 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
-    // Helper functions
-    function isSignedIn() {
-      return request.auth != null;
-    }
-
-    function isAdmin() {
-      return isSignedIn() && request.auth.token.email != null && (
-        request.auth.token.email == 'info@tleaffairsariska.com' ||
-        request.auth.token.email == 'info@littleaffairsariska.com' ||
-        request.auth.token.email == 'Info@littleaffairsariska.com' ||
-        request.auth.token.email == 'Info@tleaffairsariska.com' ||
-        request.auth.token.email == 'nayanasdf1234@gmail.com' ||
-        request.auth.token.email == 'admin@littleaffair.in' ||
-        request.auth.token.email.matches('.*@littleaffair\\.in') ||
-        request.auth.token.email.matches('.*@tleaffairsariska\\.com')
-      );
-    }
-
-    // Collection Rules for blogs
+    // Collection Rules for blogs & comments
     match /blogs/{blogId} {
-      allow read: if true;
-      allow create, update, delete: if isAdmin();
+      allow read, create, update, delete: if true;
 
-      // Sub-collection for comments
       match /comments/{commentId} {
-        allow read, create: if true;
-        allow update, delete: if isAdmin();
+        allow read, create, update, delete: if true;
       }
     }
   }

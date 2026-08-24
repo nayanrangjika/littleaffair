@@ -107,12 +107,9 @@ export function Dining() {
             {[
               { src: '/dinning/breakfast setup.jpg', title: 'Breakfast Setup' },
               { src: '/dinning/courtyard dinning.png', title: 'Courtyard Dinning' },
-              { src: '/dinning/dahi paratha.jpg', title: 'Dahi Paratha' },
               { src: '/dinning/indoor dinning.png', title: 'Indoor Dinning' },
-              { src: '/dinning/omelette.jpg', title: 'Omelette' },
               { src: '/dinning/pool side dinning.png', title: 'Pool Side Dinning' },
               { src: '/dinning/rooftop lounge.jpg', title: 'Rooftop Lounge' },
-              { src: '/dinning/utpam with sambhar.jpg', title: 'Utpam With Sambhar' },
             ].map((item, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div className="group rounded-[2rem] overflow-hidden shadow-lg bg-gray-100 flex flex-col h-full">
