@@ -68,7 +68,7 @@ export function Dining() {
               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
                 <div className="relative">
                   <img 
-                    src="/dining/indoor-dinning.png" 
+                    src="/dining/indoor-dinning.jpg" 
                     alt="Dining Setup" 
                     className="w-full h-auto rounded-[2rem] shadow-xl object-cover aspect-square md:aspect-[4/5]"
                   />
@@ -106,9 +106,9 @@ export function Dining() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { src: '/dining/breakfast-setup.jpg', title: 'Breakfast Setup' },
-              { src: '/dining/courtyard-dinning.png', title: 'Courtyard Dinning' },
-              { src: '/dining/indoor-dinning.png', title: 'Indoor Dinning' },
-              { src: '/dining/pool-side-dinning.png', title: 'Pool Side Dinning' },
+              { src: '/dining/courtyard-dinning.jpg', title: 'Courtyard Dinning' },
+              { src: '/dining/indoor-dinning.jpg', title: 'Indoor Dinning' },
+              { src: '/dining/pool-side-dinning.jpg', title: 'Pool Side Dinning' },
               { src: '/dining/rooftop-lounge.jpg', title: 'Rooftop Lounge' },
             ].map((item, i) => (
               <FadeIn key={i} delay={i * 0.1}>

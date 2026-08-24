@@ -25,13 +25,13 @@ const galleryImages = [
   { src: '/stay/indoor/am1-2243-hdr.jpg', category: 'indoor' },
   { src: '/stay/indoor/am1-2258-hdr.jpg', category: 'indoor' },
   { src: '/stay/indoor/am1-2288-hdr.jpg', category: 'indoor' },
-  { src: '/stay/indoor/img-7773.png', category: 'indoor' },
-  { src: '/stay/indoor/img-7774.png', category: 'indoor' },
-  { src: '/stay/indoor/img-7775.png', category: 'indoor' },
-  { src: '/stay/indoor/img-7776.png', category: 'indoor' },
-  { src: '/stay/indoor/img-7779.png', category: 'indoor' },
-  { src: '/stay/outdoor/img-7786.png', category: 'outdoor' },
-  { src: '/stay/outdoor/img-7787.png', category: 'outdoor' },
+  { src: '/stay/indoor/img-7773.jpg', category: 'indoor' },
+  { src: '/stay/indoor/img-7774.jpg', category: 'indoor' },
+  { src: '/stay/indoor/img-7775.jpg', category: 'indoor' },
+  { src: '/stay/indoor/img-7776.jpg', category: 'indoor' },
+  { src: '/stay/indoor/img-7779.jpg', category: 'indoor' },
+  { src: '/stay/outdoor/img-7786.jpg', category: 'outdoor' },
+  { src: '/stay/outdoor/img-7787.jpg', category: 'outdoor' },
 ];
 
 export function Stay() {

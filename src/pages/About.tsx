@@ -111,8 +111,8 @@ export function About() {
               { src: "/stay/o.jpg", aspect: "aspect-[4/3]" },
               { src: "/stay/i.jpg", aspect: "aspect-[3/4]" },
               { src: "/stay/o3.jpg", aspect: "aspect-square" },
-              { src: "/dining/indoor-dinning.png", aspect: "aspect-[4/5]" },
-              { src: "/dining/courtyard-dinning.png", aspect: "aspect-[16/9]" },
+              { src: "/dining/indoor-dinning.jpg", aspect: "aspect-[4/5]" },
+              { src: "/dining/courtyard-dinning.jpg", aspect: "aspect-[16/9]" },
               { src: "/experiences/sariska-jungle-safari.jpg", aspect: "aspect-square" },
             ].map((item, index) => (
               <FadeIn key={index} delay={index * 0.1} className="break-inside-avoid">
