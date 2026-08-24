@@ -253,7 +253,7 @@ export function Home() {
           <div className="flex flex-col md:flex-row-reverse gap-8 md:gap-16 items-center">
             <FadeIn direction="left" className="flex-1 w-full relative">
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
-                <img src="/recreation/AM1_2302-HDR.jpeg" alt="Recreation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
+                <img src="/recreation/am1-2302-hdr.jpg" alt="Recreation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
               </div>
             </FadeIn>
             <div className="flex-1 max-w-xl md:text-right flex flex-col md:items-end">
@@ -325,24 +325,24 @@ export function Home() {
         <div className="relative max-w-[100vw] overflow-x-hidden">
           <div className="flex gap-4 px-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8">
             {[
-              "/home_carousel/IMG_7754.PNG",
-              "/home_carousel/IMG_7756.PNG",
-              "/home_carousel/IMG_7759.PNG",
-              "/home_carousel/IMG_7760.PNG",
-              "/home_carousel/IMG_7761.PNG",
-              "/home_carousel/IMG_7766.PNG",
-              "/home_carousel/IMG_7774.PNG",
-              "/home_carousel/IMG_7776.PNG",
-              "/home_carousel/IMG_7791.PNG",
-              "/home_carousel/IMG_7798.PNG",
-              "/home_carousel/IMG_7800.PNG",
-              "/home_carousel/IMG_7801.PNG",
-              "/home_carousel/IMG_7804.PNG",
-              "/home_carousel/IMG_7805.PNG",
-              "/home_carousel/IMG_7807.PNG",
-              "/home_carousel/IMG_7809.PNG",
-              "/home_carousel/IMG_7813.PNG",
-              "/home_carousel/IMG_7823.PNG"
+              "/home-carousel/img-7754.png",
+              "/home-carousel/img-7756.png",
+              "/home-carousel/img-7759.png",
+              "/home-carousel/img-7760.png",
+              "/home-carousel/img-7761.png",
+              "/home-carousel/img-7766.png",
+              "/home-carousel/img-7774.png",
+              "/home-carousel/img-7776.png",
+              "/home-carousel/img-7791.png",
+              "/home-carousel/img-7798.png",
+              "/home-carousel/img-7800.png",
+              "/home-carousel/img-7801.png",
+              "/home-carousel/img-7804.png",
+              "/home-carousel/img-7805.png",
+              "/home-carousel/img-7807.png",
+              "/home-carousel/img-7809.png",
+              "/home-carousel/img-7813.png",
+              "/home-carousel/img-7823.png"
             ].map((src, i) => (
               <div key={i} className="w-[80vw] sm:w-[45vw] md:w-[30vw] lg:w-[22vw] aspect-[4/3] rounded-2xl overflow-hidden shadow-xl snap-center shrink-0">
                 <img src={src} alt="Gallery" className="w-full h-full object-cover" />
@@ -397,7 +397,7 @@ export function Home() {
       {/* Conservation & CTA */}
       <section className="py-12 md:py-24 px-4 md:px-8 mb-4">
         <div className="max-w-7xl mx-auto relative overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-accent text-white shadow-2xl">
-          <div className="absolute inset-0 opacity-20 bg-[url('/Untitled-2.jpg')] bg-cover bg-center mix-blend-overlay" />
+          <div className="absolute inset-0 opacity-20 bg-[url('/untitled-2.jpg')] bg-cover bg-center mix-blend-overlay" />
           
           <div className="relative z-10 px-8 py-16 md:py-24 md:px-24 flex flex-col md:flex-row gap-12 items-center text-center md:text-left">
             <div className="flex-1">

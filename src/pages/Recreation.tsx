@@ -104,7 +104,7 @@ export function Recreation() {
           <FadeIn direction="up">
             <div className="relative rounded-[3rem] overflow-hidden shadow-2xl h-[500px] group">
               <img 
-                src="/recreation/AM1_2302-HDR.jpeg" 
+                src="/recreation/am1-2302-hdr.jpg" 
                 alt="Recreation Pool" 
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
               />
@@ -118,12 +118,12 @@ export function Recreation() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              '/recreation/AM1_2062-HDR.jpg',
-              '/recreation/AM1_2229.jpg',
-              '/recreation/AM1_2302-HDR.jpeg',
-              '/recreation/AM1_2312-HDR.jpg',
-              '/recreation/AM1_2326-HDR.jpg',
-              '/recreation/AM1_2332-HDR.jpg'
+              '/recreation/am1-2062-hdr.jpg',
+              '/recreation/am1-2229.jpg',
+              '/recreation/am1-2302-hdr.jpg',
+              '/recreation/am1-2312-hdr.jpg',
+              '/recreation/am1-2326-hdr.jpg',
+              '/recreation/am1-2332-hdr.jpg'
             ].map((imgSrc, idx) => (
               <FadeIn key={idx} delay={idx * 0.1}>
                 <div className="rounded-[2rem] overflow-hidden shadow-lg aspect-[4/3] bg-gray-100 group">
