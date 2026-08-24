@@ -50,6 +50,8 @@ export function BlogPost() {
         ...doc.data()
       })) as IBlogPost[];
       setRecentPosts(docs.filter(p => p.slug !== slug).slice(0, 2));
+    }, (error) => {
+      console.warn("Error fetching recent posts:", error);
     });
 
     return () => {

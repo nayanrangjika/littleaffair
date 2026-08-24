@@ -29,6 +29,8 @@ export function CommentSection({ blogId }: CommentSectionProps) {
         ...doc.data()
       })) as BlogComment[];
       setComments(docs);
+    }, (error) => {
+      console.warn("Comments listener notice:", error);
     });
 
     return () => unsubscribe();
