@@ -1,5 +1,8 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/((?!assets/|dining/|experiences/|gallery/|home-carousel/|homepage/|recreation/|stay/|.*\\.(?:jpg|jpeg|png|webp|svg|ico|json|txt|xml|css|js)).*)",
+      "destination": "/index.html"
+    }
   ]
 }
