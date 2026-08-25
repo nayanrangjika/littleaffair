@@ -129,7 +129,7 @@ export function Stay() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row gap-16 items-center mb-32">
             <FadeIn direction="right" className="flex-1">
-              <img src="/stay/open shower.jpg" alt="Open Shower" className="rounded-[3rem] shadow-2xl object-cover w-full h-[500px]" />
+              <img src="/stay/open-shower.jpg" alt="Open Shower" className="rounded-[3rem] shadow-2xl object-cover w-full h-[500px]" />
             </FadeIn>
             <FadeIn direction="left" className="flex-1">
               <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Open Shower</h2>
@@ -141,7 +141,7 @@ export function Stay() {
 
           <div className="flex flex-col md:flex-row-reverse gap-16 items-center">
             <FadeIn direction="left" className="flex-1">
-              <img src="/stay/private villas.jpg" alt="Private Villas" className="rounded-[3rem] shadow-2xl object-cover w-full h-[500px]" />
+              <img src="/stay/private-villas.jpg" alt="Private Villas" className="rounded-[3rem] shadow-2xl object-cover w-full h-[500px]" />
             </FadeIn>
             <FadeIn direction="right" className="flex-1 md:text-right">
               <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Private Villas</h2>

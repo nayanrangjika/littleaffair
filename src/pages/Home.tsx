@@ -154,7 +154,7 @@ export function Home() {
             <FadeIn delay={0.1} className="md:col-span-1 md:row-span-2 h-[350px] md:h-full">
               <div className="relative w-full h-full rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer">
                 <img 
-                  src="/experiences/sariska jungle safari.jpg" 
+                  src="/experiences/sariska-jungle-safari-1.jpg" 
                   alt="Experience" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                 />
@@ -204,7 +204,7 @@ export function Home() {
             <FadeIn delay={0.4} direction="up" className="md:col-span-2 md:row-span-1 h-[250px] md:h-full">
               <div className="relative w-full h-full rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer">
                 <img 
-                  src="/dinning/rooftop lounge.jpg" 
+                  src="/dinning/rooftop-lounge.jpg" 
                   alt="Dining" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                 />
@@ -274,7 +274,7 @@ export function Home() {
           <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
             <FadeIn direction="right" className="flex-1 w-full relative">
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
-                <img src="/dinning/rooftop lounge.jpg" alt="Dining" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
+                <img src="/dinning/rooftop-lounge.jpg" alt="Dining" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
               </div>
             </FadeIn>
             <div className="flex-1 max-w-xl">

@@ -32,37 +32,37 @@ const experiences = [
     title: "High Tea by the Boulders",
     description: "Soak in the breathtaking views on the boulders accompanied by delicious food and a leisurely setting just for you.",
     icon: Coffee,
-    image: "/experiences/high tea by the boulders.jpg"
+    image: "/experiences/high-tea-by-the-boulders-1.jpg"
   },
   {
     title: "High Tea by the Lake",
     description: "Savor breathtaking lakeside view amidst a leisurely setting, creating an unforgettable blend of nature, delicious food, and tranquility.",
     icon: Coffee,
-    image: "/experiences/high tea by the lake.jpg"
+    image: "/experiences/high-tea-by-the-lake-1.jpg"
   },
   {
     title: "Bush/Farm Dinner",
     description: "The perfect way to end your day with a rustic touch to it is a hearty and memorable dining experience in the Jungle/Farm, surrounded by the beauty and wilderness of Tehla.",
     icon: Palmtree,
-    image: "/experiences/bush Farm dinner.jpg"
+    image: "/experiences/bush-farm-dinner-1.jpg"
   },
   {
     title: "Special Setup",
     description: "At our wilderness lodge, we take immense pleasure in crafting tailor-made and unforgettable experiences for our guests to celebrate their special occasion.",
     icon: Compass,
-    image: "/experiences/Special Setup.jpg"
+    image: "/experiences/special-setup-1.jpg"
   },
   {
     title: "Nature/Village Walk",
     description: "Explore the wilderness with our team and peek into the unseen wildlife and adventures of the forest. Mingle with the locals, get to know in-depth about the local flora and fauna!",
     icon: Map,
-    image: "/experiences/Nature Village Walk.jpg"
+    image: "/experiences/nature-village-walk-1.jpg"
   },
   {
     title: "Sariska Jungle Safari",
     description: "Travel in the back of a covered, open-air safari truck/ jeep, with an expert guide and Venture into the expanse of Sariska to get an up-close view of a variety of birds, mammals and of course the majestic Tiger!",
     icon: Compass,
-    image: "/experiences/sariska jungle safari.jpg"
+    image: "/experiences/sariska-jungle-safari-1.jpg"
   }
 ];
 

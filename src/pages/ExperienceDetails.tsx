@@ -57,10 +57,10 @@ const experienceData: Record<string, any> = {
     desc2: "As you soak in the picturesque surroundings, tantalize your taste buds with a delectable spread of high tea delights. From cookies to savory sandwiches and crispy pakoras, our high tea menu is designed to satisfy every craving and fuel your adventurous spirit.",
     desc3: "Whether you’re seeking a romantic escape, a family outing, or a memorable time with friends, our “High Tea by the Boulders” package promises an unforgettable experience that blends adventure, relaxation, and high tea delights.",
     images: [
-      "/experiences/high tea by the boulders.jpg",
-      "/experiences/high tea by boulders2.jpg",
-      "/experiences/high tea by boulders3.jpg",
-      "/experiences/high tea by boulders4.jpg"
+      "/experiences/high-tea-by-the-boulders-1.jpg",
+      "/experiences/high-tea-by-the-boulders-2.jpg",
+      "/experiences/high-tea-by-the-boulders-3.jpg",
+      "/experiences/high-tea-by-the-boulders-4.jpg"
     ]
   },
   "high-tea-by-the-lake": {
@@ -77,10 +77,10 @@ const experienceData: Record<string, any> = {
     desc2: "Take a seat at our beautifully set-up lakeside area and prepare to be pampered with a delightful high tea experience. Sip on your choice of tea, coffee, or beverages, served fresh and piping hot, as you unwind and soak in the tranquil atmosphere.",
     desc3: "Whether you’re celebrating a special occasion or simply craving a moment of peace and relaxation amidst nature, our “High Tea by the Lake” package promises an experience that will leave you with cherished memories to last a lifetime.",
     images: [
-      "/experiences/high tea by the lake.jpg",
-      "/experiences/high tea by the lake2.jpg",
-      "/experiences/high tea by the lake3.jpg",
-      "/experiences/high tea by the lake4.jpg"
+      "/experiences/high-tea-by-the-lake-1.jpg",
+      "/experiences/high-tea-by-the-lake-2.jpg",
+      "/experiences/high-tea-by-the-lake-3.jpg",
+      "/experiences/high-tea-by-the-lake-4.jpg"
     ]
   },
   "bush-farm-dinner": {
@@ -96,10 +96,10 @@ const experienceData: Record<string, any> = {
     desc2: "As you dine under the open sky, surrounded by the rugged beauty of Sariska, you’ll create memories to last a lifetime. Whether you’re celebrating a special occasion or simply savoring the joy of being alive, our Bush/farm Dinner package promises an experience that will leave you breathless and craving more.",
     desc3: "",
     images: [
-      "/experiences/bush Farm dinner.jpg",
-      "/experiences/bushfarm dinner2.jpg",
-      "/experiences/bushfarm dinner3.jpg",
-      "/experiences/bushfarm dinner4.jpg"
+      "/experiences/bush-farm-dinner-1.jpg",
+      "/experiences/bush-farm-dinner-2.jpg",
+      "/experiences/bush-farm-dinner-3.jpg",
+      "/experiences/bush-farm-dinner-4.jpg"
     ]
   },
   "special-setup": {
@@ -115,10 +115,10 @@ const experienceData: Record<string, any> = {
     desc2: "Imagine a secluded clearing transformed with the warm glow of fairy lights and lanterns, providing the perfect backdrop for a romantic dinner under the starlit sky. For birthdays, we go the extra mile with the custom jungle setup with tea lights and selected menu, ensuring that your day is celebrated in style amidst the lush greenery.",
     desc3: "",
     images: [
-      "/experiences/Special Setup.jpg",
-      "/experiences/Special Setup1.jpg",
-      "/experiences/Special Setup2.jpg",
-      "/experiences/Special Setup3.jpg"
+      "/experiences/special-setup-1.jpg",
+      "/experiences/special-setup-2.jpg",
+      "/experiences/special-setup-3.jpg",
+      "/experiences/special-setup-4.jpg"
     ]
   },
   "nature-village-walk": {
@@ -133,10 +133,10 @@ const experienceData: Record<string, any> = {
     desc2: "Immerse yourself in the local culture by mingling with the friendly residents who call the forest home. Gain insights into their traditional practices, stories, and a deep understanding of the delicate balance between humans and nature. During your jungle walk get a chance to explore the local flora and fona and you might be lucky to spot some buffalows, nilgai, rabbits and much more. This unique opportunity allows you to form connections that go beyond the surface, fostering a sense of appreciation for the environment and its inhabitants.",
     desc3: "",
     images: [
-      "/experiences/Nature Village Walk.jpg",
-      "/experiences/Nature Village Walk1.jpg",
-      "/experiences/Nature Village Walk2.jpg",
-      "/experiences/Nature Village Walk3.jpg"
+      "/experiences/nature-village-walk-1.jpg",
+      "/experiences/nature-village-walk-2.jpg",
+      "/experiences/nature-village-walk-3.jpg",
+      "/experiences/nature-village-walk-4.jpg"
     ]
   },
   "sariska-jungle-safari": {
@@ -152,10 +152,10 @@ const experienceData: Record<string, any> = {
     desc2: "As you navigate through the rugged terrain of Sariska National Park, keep your eyes peeled for sightings of the park’s resident inhabitants. From graceful deer grazing in the meadows to exotic bird species flitting through the treetops, every moment promises a new and exciting encounter with nature.",
     desc3: "",
     images: [
-      "/experiences/sariska jungle safari.jpg",
-      "/experiences/sariska jungle safari1.jpg",
-      "/experiences/sariska jungle safari2.jpg",
-      "/experiences/sariska jungle safari3.jpg"
+      "/experiences/sariska-jungle-safari-1.jpg",
+      "/experiences/sariska-jungle-safari-2.jpg",
+      "/experiences/sariska-jungle-safari-3.jpg",
+      "/experiences/sariska-jungle-safari-4.jpg"
     ]
   }
 };

@@ -1,5 +1,11 @@
 {
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/((?!assets/|dinning/|experiences/|gallery/|home_carousel/|recreation/|stay/|robots.txt|sitemap.xml).*)",
+      "destination": "/index.html"
+    }
   ]
 }
