@@ -158,7 +158,7 @@ export function BlogList() {
             {/* About Widget */}
             <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm text-center">
               <div className="w-24 h-24 mx-auto bg-gray-100 rounded-full mb-6 overflow-hidden p-2 border-2 border-accent/20">
-                <img src="https://i.postimg.cc/Dw83L9Cz/final-1-150x150.png" alt="Little Affair" className="w-full h-full object-contain" />
+                <img src="https://i.postimg.cc/Dw83L9Cz/final-1-150x150.jpg" alt="Little Affair" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-2xl font-serif text-gray-900 mb-3">About The Journal</h3>
               <p className="text-gray-600 font-light leading-relaxed mb-6">

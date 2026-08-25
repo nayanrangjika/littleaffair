@@ -101,20 +101,32 @@ export function Recreation() {
       {/* Image Gallery Highlight */}
       <section className="px-4 md:px-8 mb-24">
         <div className="max-w-7xl mx-auto">
-          <FadeIn direction="up">
-            <div className="relative rounded-[3rem] overflow-hidden shadow-2xl h-[500px] group">
-              <img 
-                src="/dinning/pool side dinning.png" 
-                alt="Recreation Pool" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
-              <div className="absolute bottom-0 left-0 p-12 text-white z-10">
-                <h2 className="text-4xl md:text-6xl font-serif mb-4">Unwind & Relax</h2>
-                <p className="font-light text-xl opacity-90">Lose yourself in the harmony of nature.</p>
-              </div>
-            </div>
+          <FadeIn direction="up" className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-4">Recreation Gallery</h2>
+            <div className="w-16 h-1 bg-accent mx-auto mb-6"></div>
+            <p className="text-gray-600 font-light text-lg max-w-2xl mx-auto">
+              Glance through the vibrant experiences, pool lounging, and serene corners at Little Affair.
+            </p>
           </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              '/recreation/AM1_2062-HDR.jpg',
+              '/recreation/AM1_2229.jpg',
+              '/recreation/AM1_2302-HDR.jpg',
+              '/recreation/AM1_2312-HDR.jpg',
+              '/recreation/AM1_2326-HDR.jpg',
+              '/recreation/AM1_2332-HDR.jpg'
+            ].map((src, index) => (
+              <FadeIn key={index} delay={index * 0.1} className="relative group aspect-[4/3] overflow-hidden rounded-3xl bg-gray-100 shadow-lg">
+                <img 
+                  src={src} 
+                  alt={`Recreation ${index + 1}`} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                />
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 

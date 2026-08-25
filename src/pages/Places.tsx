@@ -48,7 +48,7 @@ const places = [
     description: "Pandupol Hanuman Mandir, situated in Rajasthan, is a revered temple dedicated to Lord Hanuman. Located near Sariska National Park, it attracts devotees seeking blessings and spiritual solace. Legends say that this temple marks the spot where Lord Hanuman rested during his journey to rescue Mata Sita in the Ramayana epic.",
     distance: "22kms",
     time: "1.2 hours",
-    image: "https://staticimg.amarujala.com/assets/images/2025/04/12/rajasathana_407ff638ac2368c4b2dc19212f69c750.jpeg?w=414&dpr=3.0&q=80"
+    image: "https://staticimg.amarujala.com/assets/images/2025/04/12/rajasathana_407ff638ac2368c4b2dc19212f69c750.jpg?w=414&dpr=3.0&q=80"
   },
   {
     title: "Gola ka bas",

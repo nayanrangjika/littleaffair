@@ -14,7 +14,7 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-start lg:col-span-1">
             <Link to="/" className="inline-block mb-6">
               <img
-                src="https://i.postimg.cc/Dw83L9Cz/final-1-150x150.png"
+                src="https://i.postimg.cc/Dw83L9Cz/final-1-150x150.jpg"
                 alt="Little Affair"
                 className="h-24 w-24 object-contain opacity-90"
               />

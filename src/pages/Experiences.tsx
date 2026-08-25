@@ -26,7 +26,7 @@ const experiences = [
     title: "Leopard Trail",
     description: "Take a journey into the nearby buffer forests of Sariska Tiger Reserve where wilderness meets rustic charm, complete with a local safari expert and a leisurely high tea.",
     icon: Compass,
-    image: "/experiences/leopard trail.jpg"
+    image: "/experiences/leopard_trail/IMG_7804.jpg"
   },
   {
     title: "High Tea by the Boulders",

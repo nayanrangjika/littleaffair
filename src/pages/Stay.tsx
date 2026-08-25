@@ -22,16 +22,16 @@ function FadeIn({ children, delay = 0, className, direction = "up" }: { children
 }
 
 const galleryImages = [
-  { src: '/stay/i.jpg', category: 'indoor' },
-  { src: '/stay/i.png', category: 'indoor' },
-  { src: '/stay/i1.jpg', category: 'indoor' },
-  { src: '/stay/i4.png', category: 'indoor' },
-  { src: '/stay/i6.png', category: 'indoor' },
-  { src: '/stay/o.jpg', category: 'outdoor' },
-  { src: '/stay/o.png', category: 'outdoor' },
-  { src: '/stay/o2.png', category: 'outdoor' },
-  { src: '/stay/o3.jpg', category: 'outdoor' },
-  { src: '/stay/o5.png', category: 'outdoor' },
+  { src: '/stay/indoor/AM1_2243-HDR.jpg', category: 'indoor' },
+  { src: '/stay/indoor/AM1_2258-HDR.jpg', category: 'indoor' },
+  { src: '/stay/indoor/AM1_2288-HDR.jpg', category: 'indoor' },
+  { src: '/stay/indoor/IMG_7773.jpg', category: 'indoor' },
+  { src: '/stay/indoor/IMG_7774.jpg', category: 'indoor' },
+  { src: '/stay/indoor/IMG_7775.jpg', category: 'indoor' },
+  { src: '/stay/indoor/IMG_7776.jpg', category: 'indoor' },
+  { src: '/stay/indoor/IMG_7779.jpg', category: 'indoor' },
+  { src: '/stay/outdoor/IMG_7786.jpg', category: 'outdoor' },
+  { src: '/stay/outdoor/IMG_7787.jpg', category: 'outdoor' },
 ];
 
 export function Stay() {
@@ -64,7 +64,7 @@ export function Stay() {
         description="Stay in eco-luxurious stone villas at Little Affair Sariska. Built with locally sourced stone, private verandas, open-to-sky shower enclosures, and wilderness views."
         path="/stay"
         keywords="Stone Villas Sariska, Sariska resort stay, Luxury accommodation Sariska, Sariska Tiger Reserve villas, Eco luxury rooms Rajasthan"
-        ogImage="https://www.littleaffairsariska.com/stone-villas.jpg"
+        ogImage="https://www.littleaffairsariska.com/stay/indoor/AM1_2243-HDR.jpg"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "HotelRoom",

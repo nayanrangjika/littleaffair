@@ -112,7 +112,7 @@ export function Home() {
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#f3eddf] rounded-full filter blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2"></div>
               
               <img 
-                src="https://i.postimg.cc/Dw83L9Cz/final-1-150x150.png" 
+                src="https://i.postimg.cc/Dw83L9Cz/final-1-150x150.jpg" 
                 alt="Logo" 
                 className="h-24 md:h-32 w-auto object-contain mb-12 relative z-10"
               />
@@ -154,7 +154,7 @@ export function Home() {
             <FadeIn delay={0.1} className="md:col-span-1 md:row-span-2 h-[350px] md:h-full">
               <div className="relative w-full h-full rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer">
                 <img 
-                  src="/safari.jpg" 
+                  src="/experiences/sariska jungle safari.jpg" 
                   alt="Experience" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                 />
@@ -173,7 +173,7 @@ export function Home() {
             <FadeIn delay={0.2} direction="left" className="md:col-span-1 md:row-span-1 h-[250px] md:h-full">
               <div className="relative w-full h-full rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer">
                 <img 
-                  src="/stone-villas.jpg" 
+                  src="/stay/indoor/AM1_2243-HDR.jpg" 
                   alt="Villa" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                 />
@@ -204,7 +204,7 @@ export function Home() {
             <FadeIn delay={0.4} direction="up" className="md:col-span-2 md:row-span-1 h-[250px] md:h-full">
               <div className="relative w-full h-full rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer">
                 <img 
-                  src="/culinary.jpg" 
+                  src="/dinning/rooftop lounge.jpg" 
                   alt="Dining" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                 />
@@ -232,7 +232,7 @@ export function Home() {
           <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
             <FadeIn direction="right" className="flex-1 w-full relative">
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
-                <img src="/homepage/stay.png" alt="Stay" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
+                <img src="/stay/indoor/AM1_2243-HDR.jpg" alt="Stay" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
               </div>
             </FadeIn>
             <div className="flex-1 max-w-xl">
@@ -253,7 +253,7 @@ export function Home() {
           <div className="flex flex-col md:flex-row-reverse gap-8 md:gap-16 items-center">
             <FadeIn direction="left" className="flex-1 w-full relative">
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
-                <img src="/homepage/recreation.jpg" alt="Recreation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
+                <img src="/recreation/AM1_2302-HDR.jpg" alt="Recreation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
               </div>
             </FadeIn>
             <div className="flex-1 max-w-xl md:text-right flex flex-col md:items-end">
@@ -274,7 +274,7 @@ export function Home() {
           <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
             <FadeIn direction="right" className="flex-1 w-full relative">
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
-                <img src="/homepage/dinning.png" alt="Dining" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
+                <img src="/dinning/rooftop lounge.jpg" alt="Dining" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
               </div>
             </FadeIn>
             <div className="flex-1 max-w-xl">
@@ -295,7 +295,7 @@ export function Home() {
           <div className="flex flex-col md:flex-row-reverse gap-8 md:gap-16 items-center">
             <FadeIn direction="left" className="flex-1 w-full relative">
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
-                <img src="/homepage/experience.png" alt="Experiences & Adventure" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
+                <img src="/gallery/IMG_7751.jpg" alt="Experiences & Adventure" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
               </div>
             </FadeIn>
             <div className="flex-1 max-w-xl md:text-right flex flex-col md:items-end">
@@ -325,12 +325,24 @@ export function Home() {
         <div className="relative max-w-[100vw] overflow-x-hidden">
           <div className="flex gap-4 px-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8">
             {[
-              '/experiences/sariska jungle safari.jpg',
-              '/homepage/dinning.png',
-              '/stay/o3.jpg',
-              '/stay/i4.png',
-              '/experiences/Special Setup.jpg',
-              '/safari.jpg'
+              '/home_carousel/IMG_7754.jpg',
+              '/home_carousel/IMG_7756.jpg',
+              '/home_carousel/IMG_7759.jpg',
+              '/home_carousel/IMG_7760.jpg',
+              '/home_carousel/IMG_7761.jpg',
+              '/home_carousel/IMG_7766.jpg',
+              '/home_carousel/IMG_7774.jpg',
+              '/home_carousel/IMG_7776.jpg',
+              '/home_carousel/IMG_7791.jpg',
+              '/home_carousel/IMG_7798.jpg',
+              '/home_carousel/IMG_7800.jpg',
+              '/home_carousel/IMG_7801.jpg',
+              '/home_carousel/IMG_7804.jpg',
+              '/home_carousel/IMG_7805.jpg',
+              '/home_carousel/IMG_7807.jpg',
+              '/home_carousel/IMG_7809.jpg',
+              '/home_carousel/IMG_7813.jpg',
+              '/home_carousel/IMG_7823.jpg'
             ].map((src, i) => (
               <div key={i} className="w-[80vw] sm:w-[45vw] md:w-[30vw] lg:w-[22vw] aspect-[4/3] rounded-2xl overflow-hidden shadow-xl snap-center shrink-0">
                 <img src={src} alt="Gallery" className="w-full h-full object-cover" />
@@ -385,7 +397,7 @@ export function Home() {
       {/* Conservation & CTA */}
       <section className="py-12 md:py-24 px-4 md:px-8 mb-4">
         <div className="max-w-7xl mx-auto relative overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-accent text-white shadow-2xl">
-          <div className="absolute inset-0 opacity-20 bg-[url('/Untitled-2.jpg')] bg-cover bg-center mix-blend-overlay" />
+          <div className="absolute inset-0 opacity-20 bg-[url('/gallery/IMG_7751.jpg')] bg-cover bg-center mix-blend-overlay" />
           
           <div className="relative z-10 px-8 py-16 md:py-24 md:px-24 flex flex-col md:flex-row gap-12 items-center text-center md:text-left">
             <div className="flex-1">

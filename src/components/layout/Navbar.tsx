@@ -56,7 +56,7 @@ export function Navbar() {
           <Link to="/" className="flex-shrink-0 flex items-center">
             <img
               className="h-20 w-auto object-contain"
-              src="https://i.postimg.cc/Dw83L9Cz/final-1-150x150.png"
+              src="https://i.postimg.cc/Dw83L9Cz/final-1-150x150.jpg"
               alt="Little Affair Sariska"
             />
           </Link>
