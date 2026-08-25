@@ -5,15 +5,15 @@ import { X, ChevronLeft, ChevronRight, ZoomIn, Briefcase, Sun, Bed } from 'lucid
 import { SEO } from '../components/SEO';
 
 function FadeIn({ children, delay = 0, className, direction = "up", onClick }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any; onClick?: () => void }) {
-  const yOffset = direction === "up" ? 20 : 0;
-  const xOffset = direction === "left" ? 20 : direction === "right" ? -20 : 0;
+  const yOffset = direction === "up" ? 40 : 0;
+  const xOffset = direction === "left" ? 40 : direction === "right" ? -40 : 0;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: yOffset, x: xOffset }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
-      viewport={{ once: true, margin: "0px" }}
-      transition={{ duration: 0.5, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={className}
       onClick={onClick}
     >
@@ -23,56 +23,63 @@ function FadeIn({ children, delay = 0, className, direction = "up", onClick }: {
 }
 
 const allImages = [
-  "/gallery/img-7751.jpg",
-  "/gallery/img-7752.jpg",
-  "/gallery/img-7753.jpg",
-  "/gallery/img-7754.jpg",
-  "/gallery/img-7755.jpg",
-  "/gallery/img-7756.jpg",
-  "/gallery/img-7757.jpg",
-  "/gallery/img-7758.jpg",
-  "/gallery/img-7759.jpg",
-  "/gallery/img-7760.jpg",
-  "/gallery/img-7761.jpg",
-  "/gallery/img-7762.jpg",
-  "/gallery/img-7763.jpg",
-  "/gallery/img-7764.jpg",
-  "/gallery/img-7765.jpg",
-  "/gallery/img-7766.jpg",
-  "/gallery/img-7767.jpg",
-  "/gallery/img-7768.jpg",
-  "/gallery/img-7769.jpg",
-  "/gallery/img-7771.jpg",
-  "/gallery/img-7772.jpg",
-  "/gallery/img-7773.jpg",
-  "/gallery/img-7774.jpg",
-  "/gallery/img-7775.jpg",
-  "/gallery/img-7776.jpg",
-  "/gallery/img-7777.jpg",
-  "/gallery/img-7779.jpg",
-  "/gallery/img-7780.jpg",
-  "/gallery/img-7781.jpg",
-  "/gallery/img-7782.jpg",
-  "/gallery/img-7785.jpg",
-  "/gallery/img-7786.jpg",
-  "/gallery/img-7787.jpg",
-  "/gallery/img-7788.jpg",
-  "/gallery/img-7789.jpg",
-  "/gallery/img-7790.jpg",
-  "/gallery/img-7791.jpg",
-  "/gallery/img-7792.jpg",
-  "/gallery/img-7793.jpg",
-  "/gallery/img-7794.jpg",
-  "/gallery/img-7796.jpg",
-  "/gallery/img-7797.jpg",
-  "/gallery/img-7798.jpg",
-  "/gallery/img-7799.jpg",
-  "/gallery/img-7800.jpg",
-  "/gallery/img-7801.jpg",
-  "/gallery/img-7804.jpg",
-  "/gallery/img-7805.jpg",
-  "/gallery/img-7806.jpg",
-  "/gallery/img-7807.jpg"
+  '/safari.jpg',
+  '/stone-villas.jpg',
+  '/culinary.jpg',
+  '/experiences/bush Farm dinner.jpg',
+  '/experiences/high tea by the boulders.jpg',
+  '/experiences/high tea by the lake.jpg',
+  '/experiences/Nature Village Walk.jpg',
+  '/experiences/sariska jungle safari.jpg',
+  '/experiences/Special Setup.jpg',
+  '/stay/i.jpg',
+  '/stay/i.png',
+  '/stay/i1.jpg',
+  '/stay/i4.png',
+  '/stay/i6.png',
+  '/stay/o.jpg',
+  '/stay/o.png',
+  '/stay/o2.png',
+  '/stay/o3.jpg',
+  '/stay/o5.png',
+  '/stay/open shower.jpg',
+  '/stay/private villas.jpg',
+  '/homepage/dinning.png',
+  '/homepage/experience.png',
+  '/homepage/recreation.jpg',
+  '/homepage/stay.png',
+  '/dinning/breakfast setup.jpg',
+  '/dinning/courtyard dinning.png',
+  '/dinning/dahi paratha.jpg',
+  '/dinning/indoor dinning.png',
+  '/dinning/omelette.jpg',
+  '/dinning/pool side dinning.png',
+  '/dinning/rooftop lounge.jpg',
+  '/dinning/utpam with sambhar.jpg',
+  '/high tea by boulders4.jpg',
+  '/high tea by the lake.jpg',
+  '/high tea by the lake2.jpg',
+  '/high tea by the lake3.jpg',
+  '/high tea by the lake4.jpg',
+  '/bushfarm dinner.jpg',
+  '/bushfarm dinner2.jpg',
+  '/bushfarm dinner3.jpg',
+  '/bushfarm dinner4.jpg',
+  '/Special Setup.jpg',
+  '/Special Setup1.jpg',
+  '/Special Setup2.jpg',
+  '/Special Setup3.jpg',
+  '/Nature Village Walk.jpg',
+  '/Nature Village Walk1.jpg',
+  '/Nature Village Walk2.jpg',
+  '/Nature Village Walk3.jpg',
+  '/sariska jungle safari.jpg',
+  '/sariska jungle safari1.jpg',
+  '/sariska jungle safari2.jpg',
+  '/sariska jungle safari3.jpeg',
+  '/high tea by boulders.jpg',
+  '/high tea by boulders2.jpg',
+  '/high tea by boulders3.jpg'
 ];
 
 export function Gallery() {
@@ -120,12 +127,10 @@ export function Gallery() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {allImages.map((src, index) => (
-            <FadeIn key={index} delay={(index % 4) * 0.05} className="relative group aspect-square cursor-pointer overflow-hidden rounded-xl bg-gray-100" onClick={() => openLightbox(index)}>
+            <FadeIn key={index} delay={index * 0.05} className="relative group aspect-square cursor-pointer overflow-hidden rounded-xl bg-gray-100" onClick={() => openLightbox(index)}>
               <img 
                 src={src} 
-                alt={`Little Affair Gallery ${index + 1}`} 
-                loading={index < 8 ? "eager" : "lazy"}
-                decoding="async"
+                alt={`Gallery ${index}`} 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

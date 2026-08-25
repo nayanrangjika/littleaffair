@@ -1,8 +1,9 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, initializeFirestore, memoryLocalCache } from 'firebase/firestore';
+import { getFirestore, initializeFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
-import firebaseConfigLocal from '../../firebase-applet-config.json';
+const configs = import.meta.glob('../../firebase-applet-config.json', { eager: true, import: 'default' });
+const firebaseConfigLocal = (Object.values(configs)[0] || {}) as any;
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY || firebaseConfigLocal.apiKey,
@@ -24,19 +25,20 @@ const app = firebaseConfig.apiKey
   ? (getApps().length === 0 ? initializeApp(firebaseConfig) : getApp())
   : null;
 
-let dbInstance: any = null;
+if (!app && import.meta.env.PROD) {
+  console.error('Firebase configuration is missing! Please set VITE_FIREBASE_* environment variables in your deployment.');
+}
+
+let dbInstance;
 if (app) {
   try {
-    // Attempt to initialize with in-memory cache to prevent IndexedDB tab-closing/hidden iframe errors
+    // Attempt to initialize with specific settings
     dbInstance = initializeFirestore(app, { 
-      localCache: memoryLocalCache(),
+      experimentalForceLongPolling: true 
     }, firebaseConfig.firestoreDatabaseId || '(default)');
   } catch (e) {
-    try {
-      dbInstance = getFirestore(app, firebaseConfig.firestoreDatabaseId || '(default)');
-    } catch (err) {
-      console.warn('Firestore fallback init:', err);
-    }
+    // If it fails (usually because it was already initialized during hot-reload), get the existing instance
+    dbInstance = getFirestore(app, firebaseConfig.firestoreDatabaseId || '(default)');
   }
 }
 

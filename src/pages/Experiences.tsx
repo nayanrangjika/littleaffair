@@ -26,43 +26,43 @@ const experiences = [
     title: "Leopard Trail",
     description: "Take a journey into the nearby buffer forests of Sariska Tiger Reserve where wilderness meets rustic charm, complete with a local safari expert and a leisurely high tea.",
     icon: Compass,
-    image: "/experiences/leopard-trail.jpg"
+    image: "/experiences/leopard trail.jpg"
   },
   {
     title: "High Tea by the Boulders",
     description: "Soak in the breathtaking views on the boulders accompanied by delicious food and a leisurely setting just for you.",
     icon: Coffee,
-    image: "/experiences/high-tea-by-the-boulders.jpg"
+    image: "/experiences/high tea by the boulders.jpg"
   },
   {
     title: "High Tea by the Lake",
     description: "Savor breathtaking lakeside view amidst a leisurely setting, creating an unforgettable blend of nature, delicious food, and tranquility.",
     icon: Coffee,
-    image: "/experiences/high-tea-by-the-lake.jpg"
+    image: "/experiences/high tea by the lake.jpg"
   },
   {
     title: "Bush/Farm Dinner",
     description: "The perfect way to end your day with a rustic touch to it is a hearty and memorable dining experience in the Jungle/Farm, surrounded by the beauty and wilderness of Tehla.",
     icon: Palmtree,
-    image: "/experiences/bush-farm-dinner.jpg"
+    image: "/experiences/bush Farm dinner.jpg"
   },
   {
     title: "Special Setup",
     description: "At our wilderness lodge, we take immense pleasure in crafting tailor-made and unforgettable experiences for our guests to celebrate their special occasion.",
     icon: Compass,
-    image: "/experiences/special-setup.jpg"
+    image: "/experiences/Special Setup.jpg"
   },
   {
     title: "Nature/Village Walk",
     description: "Explore the wilderness with our team and peek into the unseen wildlife and adventures of the forest. Mingle with the locals, get to know in-depth about the local flora and fauna!",
     icon: Map,
-    image: "/experiences/nature-village-walk.jpg"
+    image: "/experiences/Nature Village Walk.jpg"
   },
   {
     title: "Sariska Jungle Safari",
     description: "Travel in the back of a covered, open-air safari truck/ jeep, with an expert guide and Venture into the expanse of Sariska to get an up-close view of a variety of birds, mammals and of course the majestic Tiger!",
     icon: Compass,
-    image: "/experiences/sariska-jungle-safari.jpg"
+    image: "/experiences/sariska jungle safari.jpg"
   }
 ];
 

@@ -100,13 +100,13 @@ export function Recreation() {
 
       {/* Image Gallery Highlight */}
       <section className="px-4 md:px-8 mb-24">
-        <div className="max-w-7xl mx-auto space-y-12">
+        <div className="max-w-7xl mx-auto">
           <FadeIn direction="up">
             <div className="relative rounded-[3rem] overflow-hidden shadow-2xl h-[500px] group">
               <img 
-                src="/recreation/am1-2302-hdr.jpg" 
+                src="/dinning/pool side dinning.png" 
                 alt="Recreation Pool" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
               <div className="absolute bottom-0 left-0 p-12 text-white z-10">
@@ -115,23 +115,6 @@ export function Recreation() {
               </div>
             </div>
           </FadeIn>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {[
-              '/recreation/am1-2062-hdr.jpg',
-              '/recreation/am1-2229.jpg',
-              '/recreation/am1-2302-hdr.jpg',
-              '/recreation/am1-2312-hdr.jpg',
-              '/recreation/am1-2326-hdr.jpg',
-              '/recreation/am1-2332-hdr.jpg'
-            ].map((imgSrc, idx) => (
-              <FadeIn key={idx} delay={idx * 0.1}>
-                <div className="rounded-[2rem] overflow-hidden shadow-lg aspect-[4/3] bg-gray-100 group">
-                  <img src={imgSrc} alt={`Recreation ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                </div>
-              </FadeIn>
-            ))}
-          </div>
         </div>
       </section>
 
