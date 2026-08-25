@@ -1,0 +1,9 @@
+# Prevent Git from corrupting binary image assets
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.svg text
+* text=auto eol=lf
