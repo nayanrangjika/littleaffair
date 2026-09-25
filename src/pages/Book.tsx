@@ -21,15 +21,91 @@ function FadeIn({ children, delay = 0, className, direction = "up" }: { children
   );
 }
 
+const getTodayString = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const getNextDayString = (dateStr: string) => {
+  if (!dateStr) return '';
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const date = new Date(y, m - 1, d);
+  date.setDate(date.getDate() + 1);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
 export function Book() {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [checkInDate, setCheckInDate] = useState('');
+  const [checkOutDate, setCheckOutDate] = useState('');
+  const [dateError, setDateError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const todayStr = getTodayString();
+
+  const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setCheckInDate(val);
+    setDateError('');
+
+    if (val && val < todayStr) {
+      setDateError('Check-in date cannot be in the past.');
+      return;
+    }
+
+    if (val) {
+      const minCheckOut = getNextDayString(val);
+      if (checkOutDate && checkOutDate <= val) {
+        setCheckOutDate(minCheckOut);
+      }
+    }
+  };
+
+  const handleCheckOutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setCheckOutDate(val);
+    setDateError('');
+
+    if (val && val < todayStr) {
+      setDateError('Check-out date cannot be in the past.');
+      return;
+    }
+
+    if (checkInDate && val <= checkInDate) {
+      setDateError('Check-out date must be after the check-in date.');
+      return;
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isSubmitting) return;
+
+    if (checkInDate && checkInDate < todayStr) {
+      setDateError('Check-in date cannot be in the past.');
+      return;
+    }
+
+    if (checkOutDate && checkOutDate < todayStr) {
+      setDateError('Check-out date cannot be in the past.');
+      return;
+    }
+
+    if (checkInDate && checkOutDate && checkOutDate <= checkInDate) {
+      setDateError('Check-out date must be after the check-in date.');
+      return;
+    }
     
     setIsSubmitting(true);
+    setErrorMessage('');
+    setDateError('');
     const form = e.currentTarget;
     const formData = new FormData(form);
     const accessKey = (import.meta as any).env.VITE_WEB3FORMS_ACCESS_KEY;
@@ -88,7 +164,7 @@ export function Book() {
       navigate('/thank-you');
     } catch (error) {
        console.error("Submission error:", error);
-       alert("Network error. Please try again.");
+       setErrorMessage("Network error. Please try again or reach out to us directly.");
     } finally {
        setIsSubmitting(false);
     }
@@ -152,14 +228,35 @@ export function Book() {
                 {/* Stay Details */}
                 <div>
                   <h3 className="text-2xl font-serif text-gray-900 mb-6 border-b pb-4">Stay Details</h3>
+                  {dateError && (
+                    <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
+                      {dateError}
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Check-in Date *</label>
-                      <input required type="date" name="Check-in_Date" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" />
+                      <input 
+                        required 
+                        type="date" 
+                        name="Check-in_Date" 
+                        min={todayStr}
+                        value={checkInDate}
+                        onChange={handleCheckInChange}
+                        className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" 
+                      />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Check-out Date *</label>
-                      <input required type="date" name="Check-out_Date" className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" />
+                      <input 
+                        required 
+                        type="date" 
+                        name="Check-out_Date" 
+                        min={checkInDate ? getNextDayString(checkInDate) : todayStr}
+                        value={checkOutDate}
+                        onChange={handleCheckOutChange}
+                        className="w-full bg-[#f8f5f0] border-transparent rounded-xl px-4 py-3 focus:border-accent focus:ring-accent transition-colors" 
+                      />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Number of Guests *</label>
@@ -214,6 +311,11 @@ export function Book() {
 
                 {/* Submit */}
                 <div className="pt-8 text-center md:text-left border-t">
+                  {errorMessage && (
+                    <div className="mb-4 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
+                      {errorMessage}
+                    </div>
+                  )}
                   <button 
                     type="submit" 
                     disabled={isSubmitting}
