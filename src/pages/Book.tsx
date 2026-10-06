@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, User, ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import { generateUniqueSubject } from '../lib/utils';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -120,6 +121,17 @@ export function Book() {
         dataObj[key] = `${dataObj[key]}, ${value.toString()}`;
       }
     });
+
+    const guestFullName = `${dataObj['First_Name'] || ''} ${dataObj['Last_Name'] || ''}`.trim() || 'Guest';
+    const stayDates =
+      dataObj['Check-in_Date'] && dataObj['Check-out_Date']
+        ? `${dataObj['Check-in_Date']} to ${dataObj['Check-out_Date']}`
+        : dataObj['Check-in_Date'] || '';
+    const { subject: uniqueSubject, referenceId } = generateUniqueSubject(
+      'New Booking Inquiry',
+      guestFullName,
+      stayDates
+    );
     
     try {
       const promises = [];
@@ -128,7 +140,14 @@ export function Book() {
       if (accessKey) {
         const web3FormData = new FormData();
         web3FormData.append("access_key", accessKey);
-        Object.entries(dataObj).forEach(([key, val]) => web3FormData.append(key, val));
+        web3FormData.append("subject", uniqueSubject);
+        web3FormData.append("from_name", `${guestFullName} - Little Affair Sariska`);
+        web3FormData.append("Booking_Reference", referenceId);
+        Object.entries(dataObj).forEach(([key, val]) => {
+          if (key !== "subject" && key !== "access_key" && key !== "from_name") {
+            web3FormData.append(key, val);
+          }
+        });
         
         promises.push(
           fetch("https://api.web3forms.com/submit", {
@@ -144,6 +163,9 @@ export function Book() {
       if (sheetWebhook) {
         // Using FormData perfectly simulates a standard HTML form submission
         const sheetFormData = new FormData();
+        sheetFormData.append("Subject", uniqueSubject);
+        sheetFormData.append("subject", uniqueSubject);
+        sheetFormData.append("Booking_Reference", referenceId);
         Object.entries(dataObj).forEach(([key, val]) => sheetFormData.append(key, val));
         
         promises.push(

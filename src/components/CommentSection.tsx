@@ -4,6 +4,7 @@ import { MessageSquare, Send, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { db } from '../lib/firebase';
 import { BlogComment } from '../types/blog';
+import { generateUniqueSubject } from '../lib/utils';
 
 interface CommentSectionProps {
   blogId: string;
@@ -45,13 +46,38 @@ export function CommentSection({ blogId }: CommentSectionProps) {
     setIsSubmitting(true);
     setError('');
 
+    const author = newComment.authorName.trim();
+    const commentText = newComment.content.trim();
+    const accessKey = (import.meta as any).env.VITE_WEB3FORMS_ACCESS_KEY;
+    const { subject: uniqueSubject, referenceId } = generateUniqueSubject(
+      'New Blog Comment',
+      author,
+      `Blog ID: ${blogId}`
+    );
+
     try {
       await addDoc(collection(db, 'blogs', blogId, 'comments'), {
         blogId,
-        authorName: newComment.authorName.trim(),
-        content: newComment.content.trim(),
+        authorName: author,
+        content: commentText,
         createdAt: serverTimestamp()
       });
+
+      if (accessKey) {
+        const formData = new FormData();
+        formData.append('access_key', accessKey);
+        formData.append('subject', uniqueSubject);
+        formData.append('from_name', `${author} - Blog Comment`);
+        formData.append('Author_Name', author);
+        formData.append('Comment', commentText);
+        formData.append('Blog_ID', blogId);
+        formData.append('Reference_ID', referenceId);
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData,
+        }).catch(() => {});
+      }
+
       setNewComment({ authorName: '', content: '' });
     } catch (err) {
       console.error('Error adding comment:', err);

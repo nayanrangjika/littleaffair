@@ -8,12 +8,49 @@ import { db } from '../lib/firebase';
 import { BlogPost as IBlogPost } from '../types/blog';
 import { SEO } from '../components/SEO';
 import { CommentSection } from '../components/CommentSection';
+import { generateUniqueSubject } from '../lib/utils';
 
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<IBlogPost | null>(null);
   const [recentPosts, setRecentPosts] = useState<IBlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+
+  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim() || newsletterStatus === 'submitting') return;
+    setNewsletterStatus('submitting');
+
+    const accessKey = (import.meta as any).env.VITE_WEB3FORMS_ACCESS_KEY;
+    const { subject: uniqueSubject, referenceId } = generateUniqueSubject(
+      'New Newsletter Subscription',
+      newsletterEmail.trim(),
+      post?.title || 'Blog Article'
+    );
+
+    try {
+      if (accessKey) {
+        const formData = new FormData();
+        formData.append('access_key', accessKey);
+        formData.append('subject', uniqueSubject);
+        formData.append('from_name', `${newsletterEmail.trim()} - Little Affair Newsletter`);
+        formData.append('Email', newsletterEmail.trim());
+        formData.append('Article', post?.title || slug || '');
+        formData.append('Reference_ID', referenceId);
+        await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData,
+        });
+      }
+      setNewsletterEmail('');
+      setNewsletterStatus('success');
+    } catch (err) {
+      console.error('Newsletter error:', err);
+      setNewsletterStatus('idle');
+    }
+  };
 
   useEffect(() => {
     if (!db || !slug) return;
@@ -224,14 +261,24 @@ export function BlogPost() {
               <p className="text-accent-foreground/80 font-light mb-6 text-sm">
                 Get notified about new stories and exclusive retreats.
               </p>
-              <form className="flex flex-col gap-3" onSubmit={(e) => e.preventDefault()}>
+              <form className="flex flex-col gap-3" onSubmit={handleNewsletterSubmit}>
                 <input 
                   type="email" 
+                  required
+                  value={newsletterEmail}
+                  onChange={(e) => {
+                    setNewsletterEmail(e.target.value);
+                    if (newsletterStatus === 'success') setNewsletterStatus('idle');
+                  }}
                   placeholder="Email address" 
                   className="w-full px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white transition-all text-sm"
                 />
-                <button className="w-full px-5 py-3 bg-white text-accent rounded-xl font-bold text-sm tracking-widest uppercase hover:bg-gray-50 transition-colors">
-                  Subscribe
+                <button 
+                  type="submit"
+                  disabled={newsletterStatus === 'submitting'}
+                  className="w-full px-5 py-3 bg-white text-accent rounded-xl font-bold text-sm tracking-widest uppercase hover:bg-gray-50 transition-colors disabled:opacity-70"
+                >
+                  {newsletterStatus === 'submitting' ? 'Subscribing...' : newsletterStatus === 'success' ? 'Subscribed!' : 'Subscribe'}
                 </button>
               </form>
             </div>
