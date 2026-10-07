@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, User, ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
 import { SEO } from '../components/SEO';
-import { generateUniqueSubject } from '../lib/utils';
+import { formatBookingSubject } from '../lib/utils';
 
 function FadeIn({ children, delay = 0, className, direction = "up" }: { children: React.ReactNode; delay?: number; className?: string; direction?: "up" | "left" | "right"; key?: any }) {
   const yOffset = direction === "up" ? 40 : 0;
@@ -123,14 +123,10 @@ export function Book() {
     });
 
     const guestFullName = `${dataObj['First_Name'] || ''} ${dataObj['Last_Name'] || ''}`.trim() || 'Guest';
-    const stayDates =
-      dataObj['Check-in_Date'] && dataObj['Check-out_Date']
-        ? `${dataObj['Check-in_Date']} to ${dataObj['Check-out_Date']}`
-        : dataObj['Check-in_Date'] || '';
-    const { subject: uniqueSubject, referenceId } = generateUniqueSubject(
-      'New Booking Inquiry',
+    const { subject: uniqueSubject, referenceId } = formatBookingSubject(
       guestFullName,
-      stayDates
+      dataObj['Check-in_Date'] || checkInDate,
+      dataObj['Check-out_Date'] || checkOutDate
     );
     
     try {
