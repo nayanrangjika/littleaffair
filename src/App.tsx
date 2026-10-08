@@ -29,6 +29,7 @@ import { ThankYou } from './pages/ThankYou';
 import { BlogList } from './pages/BlogList';
 import { BlogPost } from './pages/BlogPost';
 import { BlogAdmin } from './pages/BlogAdmin';
+import { LandingPage } from './pages/LandingPage';
 
 export default function App() {
   return (
@@ -39,6 +40,8 @@ export default function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/landingpage" element={<LandingPage />} />
+            <Route path="/landing-page" element={<LandingPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/stay" element={<Stay />} />
             <Route path="/experiences" element={<Experiences />} />

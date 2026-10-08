@@ -4,15 +4,16 @@ export function FloatingButtons() {
   return (
     <>
       {/* Pet Friendly Floating Button */}
-      <div className="fixed bottom-6 left-6 z-50">
-        <div className="bg-white/95 backdrop-blur-sm text-gray-900 w-14 h-14 sm:w-auto sm:h-auto sm:px-4 sm:py-3 rounded-full flex items-center justify-center gap-2 text-xs uppercase tracking-widest font-semibold shadow-xl border border-gray-100/50 cursor-default transition-all duration-300">
-          <PawPrint className="w-6 h-6 sm:w-4 sm:h-4 text-accent" />
-          <span className="hidden sm:inline">Pet Friendly Property</span>
+      <div className="fixed bottom-5 left-4 sm:bottom-6 sm:left-6 z-50">
+        <div className="bg-white/95 backdrop-blur-md text-gray-900 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full flex items-center justify-center gap-2 text-[11px] sm:text-xs uppercase tracking-wider sm:tracking-widest font-semibold shadow-xl border border-accent/20 cursor-default transition-all duration-300">
+          <PawPrint className="w-4 h-4 text-accent shrink-0" />
+          <span>Pet Friendly</span>
+          <span className="hidden md:inline">Property</span>
         </div>
       </div>
 
       {/* Action Buttons */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4 items-end">
+      <div className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-3 sm:gap-4 items-end">
         {/* WhatsApp Button */}
         <a 
           href="https://wa.me/917877083719" 
