@@ -7,24 +7,18 @@ import {
   Phone,
   PawPrint,
   CheckCircle2,
-  MapPin,
-  Sparkles,
-  Play,
   ExternalLink,
   X,
   ChevronLeft,
   ChevronRight,
   ZoomIn,
-  Calendar,
+  Compass,
+  Coffee,
+  Palmtree,
   Loader2
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { formatBookingSubject } from '../lib/utils';
-
-import culinaryFeastImg from '../assets/images/culinary_rajasthani_feast_1791498923027.jpg';
-import culinaryFarmImg from '../assets/images/culinary_farm_to_table_1791498937923.jpg';
-import culinaryHighTeaImg from '../assets/images/culinary_high_tea_platter_1791498949303.jpg';
-import culinaryDessertImg from '../assets/images/culinary_gourmet_dessert_1791498961567.jpg';
 
 function FadeIn({
   children,
@@ -61,27 +55,27 @@ const stayOptions = [
   {
     title: 'Stone Villa',
     subtitle: 'with private sitout and terrace',
-    image: '/stay/indoor/AM1_2243-HDR.jpg',
+    image: '/stay/outdoor/IMG_7786.jpg',
     fallbackImage: '/stay/private-villas.jpg'
   },
   {
     title: 'Stone Villa',
     subtitle: 'with Private Sitout, Plunge Pool and Terrace',
-    image: '/stay/outdoor/IMG_7786.jpg',
+    image: '/gallery/IMG_7788.jpg',
     fallbackImage: '/stay/open-shower.jpg'
   },
   {
     title: 'Stone Villa',
     subtitle: 'with Balcony',
-    image: '/stay/indoor/AM1_2288-HDR.jpg',
-    fallbackImage: '/stay/indoor/AM1_2258-HDR.jpg'
+    image: '/stay/indoor/AM1_2243-HDR.jpg',
+    fallbackImage: '/stay/indoor/AM1_2288-HDR.jpg'
   }
 ];
 
 const recreationItems = [
   {
     title: 'Swimming Pool',
-    image: '/recreation/AM1_2302-HDR.jpg'
+    image: '/recreation/AM1_2229.jpg'
   },
   {
     title: 'Lounge',
@@ -89,34 +83,34 @@ const recreationItems = [
   },
   {
     title: 'Library',
-    image: '/recreation/AM1_2312-HDR.jpg'
+    image: '/recreation/AM1_2332-HDR.jpg'
   },
   {
     title: 'Kids Play Area',
-    image: '/recreation/AM1_2326-HDR.jpg'
+    image: '/recreation/AM1_2302-HDR.jpg'
   },
   {
     title: 'TV and Pool Area',
-    image: '/recreation/AM1_2229.jpg'
+    image: '/recreation/AM1_2312-HDR.jpg'
   }
 ];
 
 const diningItems = [
   {
     title: 'Dining',
-    image: '/dinning/indoor-dining.jpg'
+    image: '/gallery/IMG_7767.jpg'
   },
   {
     title: 'Courtyard Dining',
-    image: '/dinning/courtyard-dining.jpg'
+    image: '/gallery/IMG_7782.jpg'
   },
   {
     title: 'Rooftop Dining',
-    image: '/dinning/rooftop-lounge.jpg'
+    image: '/gallery/IMG_7766.jpg'
   },
   {
     title: 'Lounge Dining',
-    image: '/dinning/breakfast-setup.jpg'
+    image: '/gallery/IMG_7768.jpg'
   },
   {
     title: 'PoolSide Dining',
@@ -126,112 +120,179 @@ const diningItems = [
 
 const culinaryDelights = [
   {
-    src: culinaryFeastImg,
-    title: 'Royal Rajasthani Thali & Laal Maas',
-    caption: 'Slow-cooked regional delicacies crafted with hand-ground spices'
+    src: '/gallery/IMG_7755.jpg',
+    title: 'Traditional Indian & Rajasthani Thali',
+    caption: 'Authentic regional delicacies prepared fresh in our resort kitchen'
   },
   {
-    src: culinaryFarmImg,
-    title: 'Farm-to-Table Harvest & Wood-Fired Flatbreads',
-    caption: 'Fresh organic produce picked daily from local farms in Tehla'
+    src: '/gallery/IMG_7754.jpg',
+    title: 'Gourmet Multi-Cuisine Delicacies',
+    caption: 'Handcrafted pasta and global favorites served amidst warm ambiance'
   },
   {
-    src: culinaryHighTeaImg,
-    title: 'Sunset High Tea Platter',
-    caption: 'Earthen kulhad masala chai, warm savories, and artisanal bakes'
+    src: '/gallery/IMG_7760.jpg',
+    title: 'Artisanal High Tea & Pastries',
+    caption: 'Tiered high tea savories and desserts served in the wilderness'
   },
   {
-    src: culinaryDessertImg,
-    title: 'Artisanal Saffron Ghewar & Rose Rabri',
-    caption: 'Signature handcrafted heritage desserts under the starlit sky'
+    src: '/gallery/IMG_7758.jpg',
+    title: 'Farm-to-Table Organic Produce',
+    caption: 'Freshly harvested vegetables from our farm to your plate'
   }
 ];
 
 const experiencesList = [
   {
     title: 'Jungle Safari',
+    slug: 'sariska-jungle-safari',
     image: '/experiences/sariska-jungle-safari-1.jpg',
-    link: '/experiences/sariska-jungle-safari',
-    desc: 'Venture deep into Sariska Tiger Reserve in an open-air gypsy with expert naturalists.'
+    icon: Compass,
+    description:
+      'Travel in the back of a covered, open-air safari truck/jeep, with an expert guide and venture into the expanse of Sariska to get an up-close view of a variety of birds, mammals and of course the majestic Tiger!'
   },
   {
     title: 'Leopard Trail',
+    slug: 'leopard-trail',
     image: '/experiences/leopard_trail/IMG_7804.jpg',
-    link: '/experiences/leopard-trail',
-    desc: 'Explore the buffer forests of Sariska where rustic wilderness meets scenic high tea.'
+    icon: Compass,
+    description:
+      'Take a journey into the nearby buffer forests of Sariska Tiger Reserve where wilderness meets rustic charm, complete with a local safari expert and a leisurely high tea.'
   },
   {
     title: 'High Tea by the Boulders',
-    image: '/experiences/high-tea-by-the-boulders-1.jpg',
-    link: '/experiences/high-tea-by-the-boulders',
-    desc: 'Soak in panoramic Aravalli boulder views over steaming masala chai and gourmet snacks.'
+    slug: 'high-tea-by-the-boulders',
+    image: '/gallery/IMG_7765.jpg',
+    icon: Coffee,
+    description:
+      'Soak in the breathtaking views on the boulders accompanied by delicious food and a leisurely setting just for you.'
   },
   {
     title: 'Bush/Farm Dinner',
-    image: '/experiences/bush-farm-dinner-1.jpg',
-    link: '/experiences/bush-farm-dinner',
-    desc: 'An intimate lantern-lit dinner amidst the tranquil wilderness and farms of Tehla.'
+    slug: 'bush-farm-dinner',
+    image: '/gallery/IMG_7767.jpg',
+    icon: Palmtree,
+    description:
+      'The perfect way to end your day with a rustic touch to it is a hearty and memorable dining experience in the Jungle/Farm, surrounded by the beauty and wilderness of Tehla.'
   },
   {
     title: 'Special Setup',
-    image: '/experiences/special-setup-1.jpg',
-    link: '/experiences/special-setup',
-    desc: 'Bespoke fairy-lit setups curated for anniversaries, birthdays, and romantic evenings.'
+    slug: 'special-setup',
+    image: '/gallery/IMG_7771.jpg',
+    icon: Compass,
+    description:
+      'At our wilderness lodge, we take immense pleasure in crafting tailor-made and unforgettable experiences for our guests to celebrate their special occasion.'
   }
 ];
 
 const googleReviews = [
   {
-    name: 'Aarav Malhotra',
-    date: '2 weeks ago',
-    rating: 5,
-    avatar: 'AM',
-    text: 'An unforgettable stay near Sariska! The 900 sq ft Stone Villa with the open-to-sky shower and private sitout felt so peaceful and luxurious. The staff arranged our morning Jungle Safari and a magical Bush Dinner under the stars.'
+    name: 'Swati Chabba',
+    date: 'a month ago on Google',
+    score: '5/5',
+    avatar: 'SC',
+    avatarBg: 'bg-emerald-700 text-white',
+    text: 'Our stay at Little Affair, Sariska was such a beautiful experience—peaceful, refreshing, and wonderfully close to nature. Tucked away in the hills and surrounded by lush greenery, this hidden gem feels like a world away from the usual hustle and bustle. The stone villas blend beautifully with the natural surroundings, while the ambience is warm, serene, and incredibly inviting. Every corner has its own charm, making it the perfect place to slow down, breathe, and reconnect with nature. And the experience is made even better with delicious food, beautiful surroundings, and thoughtful hospitality.',
+    tripType: 'Holiday · Nature Escape',
+    ratings: 'Rooms 5.0 · Service 5.0 · Location 5.0',
+    highlights: 'Luxury · Great view · Quiet'
   },
   {
-    name: 'Priya & Vikram Singhania',
-    date: '1 month ago',
-    rating: 5,
-    avatar: 'PV',
-    text: 'We brought our golden retriever along and could not have asked for a warmer pet-friendly resort. The plunge pool villa, freshly prepared farm-to-table Rajasthani food, and High Tea by the Boulders were 10/10!'
+    name: 'Manavjeet Singh',
+    date: '2 months ago on Google',
+    score: '5/5',
+    avatar: 'M',
+    avatarBg: 'bg-slate-600 text-white',
+    text: 'We had the best weekend stay at this property! The best part - it’s close to Delhi and Jaipur, so super easy to reach. The location, hospitality, and overall vibe made it the perfect getaway. Everything was clean, peaceful, and the staff was super welcoming. If you’re looking for the best place for a fun weekend getaway in Rajasthan, this is it. Highly recommend!',
+    tripType: 'Family',
+    ratings: 'Rooms 5.0 · Service 5.0 · Location 5.0',
+    highlights: 'Luxury · Great view · Quiet · Child-friendly · Great value'
   },
   {
-    name: 'Neha Kapoor',
-    date: '3 weeks ago',
-    rating: 5,
+    name: 'Navneet Kaushal',
+    date: '6 months ago on Google',
+    score: '5/5',
     avatar: 'NK',
-    text: 'True symphony of wildlife and luxury! Every corner is thoughtfully designed with local stone. The kids loved the pool and play area while we relaxed in the library and rooftop dining lounge. Highly recommended!'
+    avatarBg: 'bg-amber-800 text-white',
+    text: 'Awesome experience overall. The entire staff was courteous, attentive, and quick to respond throughout our stay, which really made a difference. A special thanks to Devendra for going out of his way to accommodate our last minute requests so seamlessly. His effort added a very personal touch to the experience.',
+    tripType: 'Holiday · Family',
+    ratings: 'Rooms 5.0 · Service 5.0 · Location 5.0',
+    highlights: 'Luxury · Great view · Quiet'
   },
   {
-    name: 'Rohan Khanna',
-    date: '2 months ago',
-    rating: 5,
-    avatar: 'RK',
-    text: 'Just a short drive from Delhi NCR and Jaipur, yet it feels like a secluded paradise. Spotted a leopard on the trail and came back to warm hospitality and mouthwatering culinary delights.'
+    name: 'Diya Marwah',
+    date: '7 months ago on Google',
+    score: '5/5',
+    avatar: 'D',
+    avatarBg: 'bg-purple-700 text-white',
+    text: 'Had a great stay at Little Affairs Resort, Sariska with my family. We were a group of 17 people and the overall experience was wonderful. The rooms and the entire environment of the resort were very nice and well maintained. The staff was super friendly and always ready to help. Everything was clean and well managed, and we didn’t face any issues during our stay. We also celebrated Holi there and the arrangements were excellent. 100% recommended for a relaxing family trip!',
+    tripType: 'Holiday · Family',
+    ratings: 'Rooms 5.0 · Service 5.0 · Location 5.0',
+    highlights: 'Great view · Quiet · Child-friendly · Great value'
+  },
+  {
+    name: 'Virien',
+    date: '10 months ago on Google',
+    score: '5/5',
+    avatar: 'V',
+    avatarBg: 'bg-teal-700 text-white',
+    text: 'Our stay at Little Affair was small but one of the memorable trips for us. It was the first time we took a chance on taking our senior dog on his first journey. We were sceptic but the place and the people here were amazing. The rooms are nice and airy and well thought out and the staff is so helpful and polite. Already planning our next visit.',
+    tripType: 'Holiday · Couple',
+    ratings: 'Rooms 5.0 · Service 5.0 · Location 5.0',
+    highlights: 'Luxury · Great view · Romantic · Quiet'
+  },
+  {
+    name: 'abhishek mittal',
+    date: '2 months ago on Google',
+    score: '5/5',
+    avatar: 'a',
+    avatarBg: 'bg-fuchsia-800 text-white',
+    text: 'Nice boutique property with only 6 cottages — very peaceful and relaxing for a weekend getaway with parents. We were the only guests as it was off-season. Big, clean rooms, good food and very friendly staff. Overall a pleasant stay!',
+    tripType: 'Holiday · Family',
+    ratings: 'Rooms 5.0 · Service 5.0 · Location 4.0',
+    highlights: 'Quiet'
+  },
+  {
+    name: 'Karn Pratap Khuteta',
+    date: '2 months ago on Google',
+    score: '5/5',
+    avatar: 'KP',
+    avatarBg: 'bg-stone-700 text-white',
+    text: 'Located in Sariska, very very close to delhi and jaipur it’s really one of the best stays that we have been to India. The pool was fabulous. Cleanliness was top notch. Special mention about the owner, Mr. Nimit whose hospitality and warmth made our stay memorable.',
+    tripType: 'Holiday · Friends',
+    ratings: 'Rooms 5.0 · Service 5.0 · Location 5.0',
+    highlights: 'Luxury · Pool · Hospitality'
+  },
+  {
+    name: '136jackieh',
+    date: '8 months ago on Tripadvisor',
+    score: '5/5',
+    avatar: 'J',
+    avatarBg: 'bg-green-700 text-white',
+    text: 'I very much enjoyed my stay, we found Little Affair 10minutes down a well posted track. There was a warm welcome and very attentive staff. The manager arranged everything very well. It is a tranquil hidden spot. I stayed for two nights and would have been happy to rest for longer.',
+    tripType: 'Holiday · Tranquil Escape',
+    ratings: 'Rooms 5.0 · Service 5.0 · Location 5.0',
+    highlights: 'Tranquil · Attentive Staff'
   }
 ];
 
 const clientTestimonialReels = [
   {
     id: 1,
-    reelId: 'DXRbWOGgXXz',
     url: 'https://www.instagram.com/reel/DXRbWOGgXXz/',
     embedUrl: 'https://www.instagram.com/reel/DXRbWOGgXXz/embed',
-    label: 'Guest Story #1'
+    label: 'Guest Testimonial #1'
   },
   {
     id: 2,
-    reelId: 'DXRbWOGgXXz',
     url: 'https://www.instagram.com/reel/DXRbWOGgXXz/',
     embedUrl: 'https://www.instagram.com/reel/DXRbWOGgXXz/embed',
-    label: 'Guest Story #2'
+    label: 'Guest Testimonial #2'
   },
   {
     id: 3,
-    reelId: 'DXRbWOGgXXz',
     url: 'https://www.instagram.com/reel/DXRbWOGgXXz/',
     embedUrl: 'https://www.instagram.com/reel/DXRbWOGgXXz/embed',
-    label: 'Guest Story #3'
+    label: 'Guest Testimonial #3'
   }
 ];
 
@@ -409,15 +470,17 @@ export function LandingPage() {
       <section className="relative min-h-[92dvh] md:min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#f3eddf] p-2 sm:p-4 pt-20 sm:pt-24">
         <div className="relative w-full min-h-[85dvh] md:min-h-[92dvh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl flex items-center justify-center">
           <img
-            src="/stay/private-villas.jpg"
+            src="https://i.postimg.cc/y829HSW-Z/Whats-App-Image-2024-02-26-at-10-25-54-243793df.jpg"
+            onError={(e) => {
+              e.currentTarget.src = '/recreation/AM1_2229.jpg';
+            }}
             alt="A symphony of wildlife and luxury at Little Affair Sariska"
             className="absolute inset-0 w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/25" />
 
           <div className="relative z-20 text-center text-white px-4 sm:px-8 py-12 flex flex-col items-center max-w-5xl mx-auto">
-            {/* Pet-Friendly & Location Trust Pill */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -427,10 +490,10 @@ export function LandingPage() {
               <span>Sariska, Rajasthan</span>
               <span aria-hidden="true">·</span>
               <span className="inline-flex items-center gap-1.5 text-[#f3eddf]">
-                <PawPrint className="w-4 h-4" /> Pet Friendly Resort
+                <PawPrint className="w-4 h-4" /> Pet Friendly Property
               </span>
               <span aria-hidden="true">·</span>
-              <span>900 Sq. Ft. Private Villas</span>
+              <span>6 Luxury Stone Villas</span>
             </motion.div>
 
             <motion.h1
@@ -449,7 +512,7 @@ export function LandingPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-base sm:text-xl md:text-2xl font-light mb-8 sm:mb-10 max-w-2xl text-white/90 leading-relaxed"
             >
-              Private luxury stone villas, open-to-sky showers, and curated wilderness adventures at the edge of Sariska Tiger Reserve.
+              A Unit of Gaura Hospitality
             </motion.p>
 
             <motion.div
@@ -458,18 +521,12 @@ export function LandingPage() {
               transition={{ duration: 0.8, delay: 0.45 }}
               className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 w-full sm:w-auto justify-center"
             >
-              <a
-                href="#quick-book"
-                className="bg-accent hover:bg-accent-dark text-white px-8 py-4 rounded-full transition-all font-semibold shadow-xl flex items-center justify-center gap-2 group text-sm sm:text-base whitespace-nowrap"
-              >
-                Check Availability
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
               <Link
                 to="/book"
-                className="bg-white text-gray-900 px-8 py-4 rounded-full hover:bg-gray-100 transition-all font-semibold shadow-xl flex items-center justify-center gap-2 text-sm sm:text-base whitespace-nowrap"
+                className="bg-white text-gray-900 px-8 py-4 rounded-full hover:bg-gray-100 transition-all font-semibold shadow-xl flex items-center justify-center gap-2 group text-sm sm:text-base whitespace-nowrap"
               >
                 Book Your Stay
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href="tel:+917877083719"
@@ -489,7 +546,7 @@ export function LandingPage() {
           <FadeIn>
             <div className="bg-white rounded-[2rem] md:rounded-[3.5rem] p-8 sm:p-12 md:p-16 shadow-xl text-center max-w-5xl mx-auto mb-16 md:mb-20 relative overflow-hidden">
               <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">
-                Private Luxury Sanctuary
+                Accommodations
               </p>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-gray-900 mb-6">
                 Stay
@@ -506,9 +563,7 @@ export function LandingPage() {
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif text-gray-900 mb-3">
               Stay Options
             </h3>
-            <p className="text-gray-600 font-light text-sm sm:text-base">
-              Tap any villa option below to explore full details and gallery
-            </p>
+            <div className="w-16 h-1 bg-accent mx-auto" />
           </FadeIn>
 
           {/* 3 Stay Options - All boxes clickable and lead to /stay */}
@@ -544,7 +599,7 @@ export function LandingPage() {
                     </div>
                     <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-center sm:justify-between text-xs uppercase tracking-widest font-semibold text-accent">
                       <span>Explore Villa</span>
-                      <span className="hidden sm:inline">900 Sq. Ft.</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </Link>
@@ -559,7 +614,7 @@ export function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center mb-12 md:mb-16">
             <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">
-              Resort Amenities & Leisure
+              Leisure & Amenities
             </p>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-gray-900 mb-4">
               Recreation
@@ -623,7 +678,7 @@ export function LandingPage() {
                     to="/book"
                     className="inline-flex items-center justify-center gap-2 bg-accent text-white px-7 py-3.5 rounded-full text-sm font-semibold uppercase tracking-widest hover:bg-accent-dark transition-colors shadow-md whitespace-nowrap"
                   >
-                    Plan Your Escape <ArrowRight className="w-4 h-4" />
+                    Book Your Stay <ArrowRight className="w-4 h-4" />
                   </Link>
                   <a
                     href="https://www.instagram.com/reel/DYMDW8RB_iv/"
@@ -658,7 +713,7 @@ export function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center mb-12 md:mb-16">
             <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">
-              Ambience & Settings
+              Culinary Spaces
             </p>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-gray-900 mb-4">
               Dining
@@ -692,7 +747,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* 6. OUR CULINARY DELIGHTS - Good looking gallery view of 4 food images */}
+      {/* 6. OUR CULINARY DELIGHTS - Gallery view using real uploaded food images from the website */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center mb-12 md:mb-16">
@@ -704,7 +759,7 @@ export function LandingPage() {
             </h2>
             <div className="w-16 h-1 bg-accent mx-auto mb-6" />
             <p className="text-gray-600 font-light text-base sm:text-lg max-w-2xl mx-auto">
-              From royal Rajasthani recipes cooked with farm-fresh ingredients to artisanal bush dinners and sunset high tea platters.
+              Glimpses of our curated farm-to-table dishes, traditional Rajasthani platters, and outdoor high tea delicacies.
             </p>
           </FadeIn>
 
@@ -716,7 +771,7 @@ export function LandingPage() {
                 onClick={() => setSelectedFoodImg(idx)}
                 className="group cursor-pointer bg-white rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
+                <div className="relative aspect-[3/4] overflow-hidden bg-gray-200">
                   <img
                     src={food.src}
                     alt={food.title}
@@ -726,7 +781,7 @@ export function LandingPage() {
                     <ZoomIn className="text-white w-8 h-8" />
                   </div>
                 </div>
-                <div className="p-6 flex flex-col flex-grow justify-between">
+                <div className="p-6 flex flex-col flex-grow justify-between text-center">
                   <div>
                     <h3 className="text-lg sm:text-xl font-serif text-gray-900 mb-2">
                       {food.title}
@@ -742,12 +797,12 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* 7. EXPERIENCE AND ADVENTURE - Boxes with heading, images, and "Know More" leading to respective page */}
+      {/* 7. EXPERIENCE AND ADVENTURE - Matching website's Experiences.tsx card design & uploaded images */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 bg-white rounded-[2.5rem] md:rounded-[4rem] shadow-sm">
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center mb-12 md:mb-16">
             <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">
-              Curated Wilderness Moments
+              Discover
             </p>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-gray-900 mb-4">
               Experience and Adventure
@@ -755,42 +810,47 @@ export function LandingPage() {
             <div className="w-16 h-1 bg-accent mx-auto" />
           </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {experiencesList.map((exp, idx) => (
-              <FadeIn key={idx} delay={idx * 0.08} className="h-full">
-                <div className="bg-[#f3eddf]/50 rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col h-full group">
-                  <Link to={exp.link} className="block aspect-[4/3] overflow-hidden bg-gray-200 relative">
-                    <img
-                      src={exp.image}
-                      alt={exp.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </Link>
-                  <div className="p-6 sm:p-8 flex flex-col flex-grow justify-between">
-                    <div>
-                      <h3 className="text-2xl font-serif text-gray-900 mb-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {experiencesList.map((exp, index) => (
+              <FadeIn key={index} delay={index * 0.1} className="h-full">
+                <Link to={`/experiences/${exp.slug}`} className="block h-full">
+                  <div className="bg-[#f3eddf]/45 rounded-[2.5rem] overflow-hidden shadow-xl h-full flex flex-col group hover:-translate-y-2 transition-transform duration-300 border border-black/5">
+                    <div className="h-64 overflow-hidden relative">
+                      <img
+                        src={exp.image}
+                        alt={exp.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span className="text-white uppercase tracking-widest text-sm font-semibold opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-2">
+                          Know More <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </div>
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-2xl shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300 delay-100">
+                        <exp.icon className="w-6 h-6 text-accent" />
+                      </div>
+                    </div>
+                    <div className="p-8 bg-white flex flex-col flex-grow">
+                      <h3 className="text-2xl font-serif text-gray-900 mb-4">
                         {exp.title}
                       </h3>
-                      <p className="text-gray-600 font-light text-sm sm:text-base leading-relaxed mb-6">
-                        {exp.desc}
+                      <p className="text-gray-600 font-light text-base leading-relaxed flex-grow mb-6">
+                        {exp.description}
                       </p>
+                      <div className="flex items-center text-accent text-sm font-semibold uppercase tracking-widest gap-2 group-hover:text-accent-dark transition-colors mt-auto">
+                        Know More{' '}
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
-                    <Link
-                      to={exp.link}
-                      className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 hover:bg-accent hover:text-white px-6 py-3 rounded-full text-xs uppercase tracking-widest font-semibold transition-colors shadow-sm w-full sm:w-fit"
-                    >
-                      <span>Know More</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
                   </div>
-                </div>
+                </Link>
               </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 8. WHAT OUR GUESTS SAY ABOUT US - Google Reviews + 3 Client Video Testimonials */}
+      {/* 8. WHAT OUR GUESTS SAY ABOUT US - Real Google Reviews from attached screenshots + 3 Client Video Testimonials */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center mb-12 md:mb-16">
@@ -798,10 +858,10 @@ export function LandingPage() {
               <span className="font-semibold text-gray-900">Google Reviews</span>
               <span aria-hidden="true">·</span>
               <span className="inline-flex items-center gap-1 text-amber-500 font-semibold tabular-nums">
-                4.9 <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                5.0 <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
               </span>
               <span aria-hidden="true">·</span>
-              <span className="text-gray-600">Verified Guest Stays</span>
+              <span className="text-gray-600">Little Affair Sariska</span>
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-gray-900 mb-4" style={{ textWrap: 'balance' }}>
               What our Guests say about us
@@ -809,32 +869,37 @@ export function LandingPage() {
             <div className="w-16 h-1 bg-accent mx-auto" />
           </FadeIn>
 
-          {/* Google Reviews Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 md:mb-24">
+          {/* Real Google Reviews Grid from Attached Screenshots */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 md:mb-24">
             {googleReviews.map((review, idx) => (
-              <FadeIn key={idx} delay={idx * 0.1} className="h-full">
+              <FadeIn key={idx} delay={idx * 0.08} className="h-full">
                 <div className="bg-white rounded-[2rem] p-6 sm:p-8 shadow-lg h-full flex flex-col justify-between border border-black/5">
                   <div>
-                    <div className="flex items-center justify-between mb-4">
+                    {/* Header matching Google review screenshot */}
+                    <div className="flex items-start justify-between gap-3 mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-11 h-11 rounded-full bg-accent/15 text-accent font-serif font-semibold flex items-center justify-center text-sm">
+                        <div
+                          className={`w-11 h-11 rounded-full font-sans font-semibold flex items-center justify-center text-base shrink-0 ${review.avatarBg}`}
+                        >
                           {review.avatar}
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-900 text-sm sm:text-base">
+                          <h4 className="font-semibold text-gray-900 text-base leading-snug">
                             {review.name}
                           </h4>
-                          <p className="text-xs text-gray-500">{review.date}</p>
+                          <div className="flex items-center gap-1.5 text-xs text-gray-500 mt-0.5">
+                            <span>{review.date}</span>
+                          </div>
                         </div>
                       </div>
-                      {/* Google 'G' mark */}
-                      <div className="w-7 h-7 rounded-full bg-[#f8f5f0] flex items-center justify-center text-xs font-bold text-accent">
-                        G
-                      </div>
+                      <span className="text-lg font-bold text-gray-900 tabular-nums shrink-0">
+                        {review.score}
+                      </span>
                     </div>
 
+                    {/* 5 Stars */}
                     <div className="flex items-center gap-1 mb-4">
-                      {Array.from({ length: review.rating }).map((_, i) => (
+                      {Array.from({ length: 5 }).map((_, i) => (
                         <Star
                           key={i}
                           className="w-4 h-4 fill-amber-400 text-amber-400"
@@ -842,14 +907,29 @@ export function LandingPage() {
                       ))}
                     </div>
 
-                    <p className="text-gray-600 font-light text-sm sm:text-base leading-relaxed">
-                      "{review.text}"
+                    {/* Review Body */}
+                    <p className="text-gray-700 font-normal text-sm sm:text-[15px] leading-relaxed mb-5">
+                      {review.text}
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-1.5 text-xs text-gray-500">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent" />
-                    <span>Verified Google Review</span>
+                  {/* Trip metadata from Google screenshot */}
+                  <div className="pt-4 border-t border-gray-100 space-y-1 text-xs text-gray-600">
+                    {review.tripType && (
+                      <p>
+                        <span className="font-semibold text-gray-800">Trip type:</span>{' '}
+                        {review.tripType}
+                      </p>
+                    )}
+                    <p className="tabular-nums">
+                      <span className="font-semibold text-gray-800">{review.ratings}</span>
+                    </p>
+                    {review.highlights && (
+                      <p>
+                        <span className="font-semibold text-gray-800">Hotel highlights:</span>{' '}
+                        {review.highlights}
+                      </p>
+                    )}
                   </div>
                 </div>
               </FadeIn>
@@ -859,10 +939,10 @@ export function LandingPage() {
           {/* 3 Video Testimonials of Clients (https://www.instagram.com/reel/DXRbWOGgXXz/ in all 3 boxes) */}
           <FadeIn className="text-center mb-10 md:mb-12">
             <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-2">
-              Watch Real Guest Experiences
+              Watch Real Guest Stories
             </p>
             <h3 className="text-3xl sm:text-4xl font-serif text-gray-900">
-              Video Testimonials
+              Client Video Testimonials
             </h3>
           </FadeIn>
 
@@ -901,7 +981,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* 9. HIGH-CONVERTING QUICK RESERVATION FORM SECTION FOR GOOGLE ADS */}
+      {/* 9. DIRECT RESERVATION / INQUIRY FORM */}
       <section id="quick-book" className="py-16 md:py-24 px-4 sm:px-6 md:px-8">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
@@ -1033,7 +1113,7 @@ export function LandingPage() {
                       </>
                     ) : (
                       <>
-                        Get Best Quote <ArrowRight className="w-5 h-5" />
+                        Reserve Your Stay <ArrowRight className="w-5 h-5" />
                       </>
                     )}
                   </button>
