@@ -140,7 +140,7 @@ const experienceData: Record<string, any> = {
     ]
   },
   "sariska-jungle-safari": {
-    title: "Sariska Jungle Safari",
+    title: "Sariska Tiger Safari",
     location: "Sariska, Alwar",
     shortDesc: "Travel in the back of a covered, open-air safari truck/ jeep, with an expert guide and Venture into the expanse of Sariska to get an up-close view of a variety of birds, mammals and of course the majestic Tiger!",
     stats: [
@@ -152,10 +152,29 @@ const experienceData: Record<string, any> = {
     desc2: "As you navigate through the rugged terrain of Sariska National Park, keep your eyes peeled for sightings of the park’s resident inhabitants. From graceful deer grazing in the meadows to exotic bird species flitting through the treetops, every moment promises a new and exciting encounter with nature.",
     desc3: "",
     images: [
-      "/experiences/sariska-jungle-safari-1.jpg",
-      "/experiences/sariska-jungle-safari-2.jpg",
-      "/experiences/sariska-jungle-safari-3.jpg",
-      "/experiences/sariska-jungle-safari-4.jpg"
+      "/landing/safari/2.jpg",
+      "/landing/safari/1.jpg",
+      "/landing/safari/3.jpg",
+      "/landing/safari/4.jpg"
+    ]
+  },
+  "sariska-tiger-safari": {
+    title: "Sariska Tiger Safari",
+    location: "Sariska, Alwar",
+    shortDesc: "Travel in the back of a covered, open-air safari truck/ jeep, with an expert guide and Venture into the expanse of Sariska to get an up-close view of a variety of birds, mammals and of course the majestic Tiger!",
+    stats: [
+      { label: "Upto 6 People per Jeep", icon: Users },
+      { label: "Duration - 3.5 Hrs", icon: Clock },
+      { label: "Subject to Availability", icon: Info }
+    ],
+    desc1: "Prepare for a thrilling 3.5-hour expedition deep into the heart of Sariska’s untamed wilderness. With experienced forest guides leading the way, you’ll venture off the beaten path and into the realm of majestic tigers, elusive leopards, and a myriad of other fascinating wildlife species.",
+    desc2: "As you navigate through the rugged terrain of Sariska National Park, keep your eyes peeled for sightings of the park’s resident inhabitants. From graceful deer grazing in the meadows to exotic bird species flitting through the treetops, every moment promises a new and exciting encounter with nature.",
+    desc3: "",
+    images: [
+      "/landing/safari/2.jpg",
+      "/landing/safari/1.jpg",
+      "/landing/safari/3.jpg",
+      "/landing/safari/4.jpg"
     ]
   }
 };

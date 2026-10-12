@@ -6,7 +6,6 @@ import {
   Star,
   Phone,
   PawPrint,
-  CheckCircle2,
   ExternalLink,
   X,
   ChevronLeft,
@@ -15,10 +14,12 @@ import {
   Compass,
   Coffee,
   Palmtree,
-  Loader2
+  Loader2,
+  Images
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { formatBookingSubject } from '../lib/utils';
+import { ROOM_CATEGORIES } from './Stay';
 
 function FadeIn({
   children,
@@ -51,54 +52,63 @@ function FadeIn({
   );
 }
 
-const stayOptions = [
-  {
-    title: 'Stone Villa',
-    subtitle: 'with private sitout and terrace',
-    image: '/stay/outdoor/IMG_7786.jpg',
-    fallbackImage: '/stay/private-villas.jpg'
-  },
-  {
-    title: 'Stone Villa',
-    subtitle: 'with Private Sitout, Plunge Pool and Terrace',
-    image: '/gallery/IMG_7788.jpg',
-    fallbackImage: '/stay/open-shower.jpg'
-  },
-  {
-    title: 'Stone Villa',
-    subtitle: 'with Balcony',
-    image: '/stay/indoor/AM1_2243-HDR.jpg',
-    fallbackImage: '/stay/indoor/AM1_2288-HDR.jpg'
-  }
-];
-
 const recreationItems = [
   {
     title: 'Swimming Pool',
-    image: '/recreation/AM1_2229.jpg'
+    coverImage: '/landing/recreation/pool/3.jpg',
+    images: [
+      '/landing/recreation/pool/3.jpg',
+      '/landing/recreation/pool/2.jpg',
+      '/landing/recreation/pool/4.jpg',
+      '/landing/recreation/pool/5.jpg'
+    ]
   },
   {
-    title: 'Lounge',
-    image: '/recreation/AM1_2062-HDR.jpg'
+    title: 'Library and Lounge',
+    coverImage: '/landing/recreation/library-lounge/3.jpg',
+    images: [
+      '/landing/recreation/library-lounge/3.jpg',
+      '/landing/recreation/library-lounge/1.jpg',
+      '/landing/recreation/library-lounge/4.jpg',
+      '/recreation/AM1_2332-HDR.jpg'
+    ]
   },
   {
-    title: 'Library',
-    image: '/recreation/AM1_2332-HDR.jpg'
+    title: 'Snooker Lounge',
+    coverImage: '/landing/recreation/snooker/1.jpg',
+    images: [
+      '/landing/recreation/snooker/1.jpg',
+      '/landing/recreation/snooker/2.jpg',
+      '/recreation/AM1_2312-HDR.jpg',
+      '/recreation/AM1_2326-HDR.jpg'
+    ]
+  },
+  {
+    title: 'Gym',
+    coverImage: '/landing/recreation/gym/3.jpg',
+    images: [
+      '/landing/recreation/gym/3.jpg',
+      '/landing/recreation/gym/1.jpg',
+      '/landing/recreation/gym/2.jpg',
+      '/landing/recreation/gym/3.jpg'
+    ]
   },
   {
     title: 'Kids Play Area',
-    image: '/recreation/AM1_2302-HDR.jpg'
-  },
-  {
-    title: 'TV and Pool Area',
-    image: '/recreation/AM1_2312-HDR.jpg'
+    coverImage: '/landing/recreation/kids/1.jpg',
+    images: [
+      '/landing/recreation/kids/1.jpg',
+      '/landing/recreation/kids/2.jpg',
+      '/landing/recreation/kids/3.jpg',
+      '/recreation/AM1_2302-HDR.jpg'
+    ]
   }
 ];
 
 const diningItems = [
   {
     title: 'Dining',
-    image: '/gallery/IMG_7767.jpg'
+    image: '/landing/dining/dining.jpg'
   },
   {
     title: 'Courtyard Dining',
@@ -106,46 +116,15 @@ const diningItems = [
   },
   {
     title: 'Rooftop Dining',
-    image: '/gallery/IMG_7766.jpg'
-  },
-  {
-    title: 'Lounge Dining',
-    image: '/gallery/IMG_7768.jpg'
-  },
-  {
-    title: 'PoolSide Dining',
-    image: '/dinning/poolside-dining.jpg'
-  }
-];
-
-const culinaryDelights = [
-  {
-    src: '/gallery/IMG_7755.jpg',
-    title: 'Traditional Indian & Rajasthani Thali',
-    caption: 'Authentic regional delicacies prepared fresh in our resort kitchen'
-  },
-  {
-    src: '/gallery/IMG_7754.jpg',
-    title: 'Gourmet Multi-Cuisine Delicacies',
-    caption: 'Handcrafted pasta and global favorites served amidst warm ambiance'
-  },
-  {
-    src: '/gallery/IMG_7760.jpg',
-    title: 'Artisanal High Tea & Pastries',
-    caption: 'Tiered high tea savories and desserts served in the wilderness'
-  },
-  {
-    src: '/gallery/IMG_7758.jpg',
-    title: 'Farm-to-Table Organic Produce',
-    caption: 'Freshly harvested vegetables from our farm to your plate'
+    image: '/landing/dining/rooftop-dining.jpg'
   }
 ];
 
 const experiencesList = [
   {
-    title: 'Jungle Safari',
+    title: 'Sariska Tiger Safari',
     slug: 'sariska-jungle-safari',
-    image: '/experiences/sariska-jungle-safari-1.jpg',
+    image: '/landing/safari/2.jpg',
     icon: Compass,
     description:
       'Travel in the back of a covered, open-air safari truck/jeep, with an expert guide and venture into the expanse of Sariska to get an up-close view of a variety of birds, mammals and of course the majestic Tiger!'
@@ -275,27 +254,6 @@ const googleReviews = [
   }
 ];
 
-const clientTestimonialReels = [
-  {
-    id: 1,
-    url: 'https://www.instagram.com/reel/DXRbWOGgXXz/',
-    embedUrl: 'https://www.instagram.com/reel/DXRbWOGgXXz/embed',
-    label: 'Guest Testimonial #1'
-  },
-  {
-    id: 2,
-    url: 'https://www.instagram.com/reel/DXRbWOGgXXz/',
-    embedUrl: 'https://www.instagram.com/reel/DXRbWOGgXXz/embed',
-    label: 'Guest Testimonial #2'
-  },
-  {
-    id: 3,
-    url: 'https://www.instagram.com/reel/DXRbWOGgXXz/',
-    embedUrl: 'https://www.instagram.com/reel/DXRbWOGgXXz/embed',
-    label: 'Guest Testimonial #3'
-  }
-];
-
 const getTodayString = () => {
   const today = new Date();
   const year = today.getFullYear();
@@ -317,7 +275,12 @@ const getNextDayString = (dateStr: string) => {
 
 export function LandingPage() {
   const navigate = useNavigate();
-  const [selectedFoodImg, setSelectedFoodImg] = useState<number | null>(null);
+  const [activeAmenityLightbox, setActiveAmenityLightbox] = useState<{
+    amenityIndex: number;
+    imageIndex: number;
+  } | null>(null);
+  const [thaliLightboxOpen, setThaliLightboxOpen] = useState(false);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
@@ -461,12 +424,12 @@ export function LandingPage() {
     <div className="flex flex-col min-h-screen bg-[#f3eddf] overflow-x-hidden font-sans">
       <SEO
         title="A Symphony of Wildlife & Luxury | Little Affair Sariska"
-        description="Explore the best of Sariska's wilderness in 900 sq ft private luxury stone villas with plunge pools, open showers, jungle safaris, and farm-to-table dining."
+        description="Explore the best of Sariska's wilderness in luxurious and spacious private villa space equipped with bedroom, living room, dresser, bathroom, open shower and outside sitting deck."
         path="/landingpage"
-        keywords="Little Affair Sariska, Luxury Resort in Sariska, Stone Villa Sariska, Pet Friendly Resort Sariska, Sariska Jungle Safari Stay"
+        keywords="Little Affair Sariska, Luxury Resort in Sariska, Stone Villa Sariska, Pet Friendly Resort Sariska, Sariska Tiger Safari Stay"
       />
 
-      {/* 1. HERO SECTION - "A symphony of wildlife and luxury" written on an image */}
+      {/* 1. HERO SECTION - "A symphony of wildlife and luxury" written on an image (Check Availability button removed) */}
       <section className="relative min-h-[92dvh] md:min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#f3eddf] p-2 sm:p-4 pt-20 sm:pt-24">
         <div className="relative w-full min-h-[85dvh] md:min-h-[92dvh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl flex items-center justify-center">
           <img
@@ -493,7 +456,7 @@ export function LandingPage() {
                 <PawPrint className="w-4 h-4" /> Pet Friendly Property
               </span>
               <span aria-hidden="true">·</span>
-              <span>6 Luxury Stone Villas</span>
+              <span>Luxury Stone Villas &amp; Cottages</span>
             </motion.div>
 
             <motion.h1
@@ -539,10 +502,10 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* 2. STAY SECTION & 3 STAY OPTIONS */}
+      {/* 2. STAY SECTION & 4 ROOM CATEGORIES */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Stay Intro Card */}
+          {/* Stay Intro Card with updated text */}
           <FadeIn>
             <div className="bg-white rounded-[2rem] md:rounded-[3.5rem] p-8 sm:p-12 md:p-16 shadow-xl text-center max-w-5xl mx-auto mb-16 md:mb-20 relative overflow-hidden">
               <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">
@@ -553,7 +516,7 @@ export function LandingPage() {
               </h2>
               <div className="w-16 h-1 bg-accent mx-auto mb-8" />
               <p className="text-gray-700 font-light text-lg sm:text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto">
-                Explore the best of Sariska's wilderness in 900 sq ft of private villa space equipped with bedroom, living room, dresser, bathroom, open shower and outside sitting deck to help you experience the sense of freedom and stillness all at one place!
+                Explore the best of Sariska&apos;s wilderness in luxurious and spacious private villa space equipped with bedroom, living room, dresser, bathroom, open shower and outside sitting deck to help you experience the sense of freedom and stillness all at one place!
               </p>
             </div>
           </FadeIn>
@@ -566,21 +529,18 @@ export function LandingPage() {
             <div className="w-16 h-1 bg-accent mx-auto" />
           </FadeIn>
 
-          {/* 3 Stay Options - All boxes clickable and lead to /stay */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {stayOptions.map((option, idx) => (
-              <FadeIn key={idx} delay={idx * 0.1} className="h-full">
+          {/* 4 Room Categories - Clicking Explore Villa opens /stay/:slug with category-specific content */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {ROOM_CATEGORIES.map((option, idx) => (
+              <FadeIn key={option.slug} delay={idx * 0.1} className="h-full">
                 <Link
-                  to="/stay"
+                  to={`/stay/${option.slug}`}
                   className="group bg-white rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full hover:-translate-y-1.5"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
                     <img
-                      src={option.image}
+                      src={option.coverImage}
                       alt={`${option.title} - ${option.subtitle}`}
-                      onError={(e) => {
-                        e.currentTarget.src = option.fallbackImage;
-                      }}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
@@ -609,12 +569,12 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* 3. RECREATION SECTION - 5 images (3 next to each other) with heading below each + "and so much more - click here" */}
+      {/* 3. RECREATION SECTION - 5 final amenities; clicking any opens Lightbox with 4 images of that amenity */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 bg-white rounded-[2.5rem] md:rounded-[4rem] shadow-sm">
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center mb-12 md:mb-16">
             <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">
-              Leisure & Amenities
+              Leisure &amp; Amenities
             </p>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-gray-900 mb-4">
               Recreation
@@ -625,36 +585,34 @@ export function LandingPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {recreationItems.map((item, idx) => (
               <FadeIn key={idx} delay={idx * 0.08}>
-                <Link
-                  to="/recreation"
-                  className="group block rounded-[2rem] overflow-hidden bg-[#f3eddf]/60 hover:bg-[#f3eddf] shadow-md hover:shadow-xl transition-all duration-300"
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveAmenityLightbox({ amenityIndex: idx, imageIndex: 0 })
+                  }
+                  className="w-full text-left group block rounded-[2rem] overflow-hidden bg-[#f3eddf]/60 hover:bg-[#f3eddf] shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
-                  <div className="aspect-[4/3] overflow-hidden bg-gray-200">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
                     <img
-                      src={item.image}
+                      src={item.coverImage}
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
+                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="inline-flex items-center gap-2 bg-white/95 text-gray-900 px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold shadow-lg">
+                        <Images className="w-4 h-4 text-accent" /> View 4 Photos
+                      </span>
+                    </div>
                   </div>
                   <div className="p-5 sm:p-6 text-center">
                     <h3 className="text-xl sm:text-2xl font-serif text-gray-900 group-hover:text-accent transition-colors">
                       {item.title}
                     </h3>
                   </div>
-                </Link>
+                </button>
               </FadeIn>
             ))}
           </div>
-
-          <FadeIn className="mt-12 text-center">
-            <Link
-              to="/recreation"
-              className="inline-flex items-center gap-3 bg-accent hover:bg-accent-dark text-white px-8 py-4 rounded-full text-sm sm:text-base font-semibold tracking-wide shadow-lg hover:shadow-xl transition-all group"
-            >
-              <span>and so much more - click here</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </FadeIn>
         </div>
       </section>
 
@@ -708,7 +666,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* 5. DINING SECTION - Same 5 images box with heading */}
+      {/* 5. DINING SECTION - 3 Dining Spaces (Dining, Courtyard Dining, Rooftop Dining) */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 bg-white rounded-[2.5rem] md:rounded-[4rem] shadow-sm">
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center mb-12 md:mb-16">
@@ -747,9 +705,9 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* 6. OUR CULINARY DELIGHTS - Gallery view using real uploaded food images from the website */}
+      {/* 6. FARM-TO-TABLE SECTION - Updated philosophy text + Thali card + Reel https://www.instagram.com/reel/DW8vzjmD33I/ */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <FadeIn className="text-center mb-12 md:mb-16">
             <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">
               Farm-to-Table Gastronomy
@@ -757,47 +715,73 @@ export function LandingPage() {
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-gray-900 mb-4">
               Our Culinary Delights
             </h2>
-            <div className="w-16 h-1 bg-accent mx-auto mb-6" />
-            <p className="text-gray-600 font-light text-base sm:text-lg max-w-2xl mx-auto">
-              Glimpses of our curated farm-to-table dishes, traditional Rajasthani platters, and outdoor high tea delicacies.
+            <div className="w-16 h-1 bg-accent mx-auto mb-8" />
+            <p className="text-gray-700 font-light text-base sm:text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+              At Little Affair, we believe the freshest flavours come straight from the land. Our farm-to-table philosophy celebrates seasonal vegetables and ingredients that are either grown on-site or sourced locally from the surrounding villages. Freshly prepared with care, every meal brings you closer to the authentic flavours of the region, celebrating local produce, traditional goodness, and the simple joy of eating fresh.
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {culinaryDelights.map((food, idx) => (
-              <FadeIn
-                key={idx}
-                delay={idx * 0.1}
-                onClick={() => setSelectedFoodImg(idx)}
-                className="group cursor-pointer bg-white rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col"
-              >
-                <div className="relative aspect-[3/4] overflow-hidden bg-gray-200">
-                  <img
-                    src={food.src}
-                    alt={food.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center max-w-5xl mx-auto">
+            {/* Thali Image Card */}
+            <FadeIn
+              delay={0.1}
+              onClick={() => setThaliLightboxOpen(true)}
+              className="group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col max-w-md mx-auto w-full"
+            >
+              <div className="relative aspect-[3/4] overflow-hidden bg-gray-200">
+                <img
+                  src="/gallery/IMG_7755.jpg"
+                  alt="Traditional Indian & Rajasthani Thali"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <ZoomIn className="text-white w-8 h-8" />
+                </div>
+              </div>
+              <div className="p-6 sm:p-8 text-center">
+                <h3 className="text-xl sm:text-2xl font-serif text-gray-900 mb-2">
+                  Traditional Indian &amp; Rajasthani Thali
+                </h3>
+                <p className="text-sm sm:text-base text-gray-600 font-light leading-relaxed">
+                  Authentic regional delicacies prepared fresh for every guest.
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Culinary Instagram Reel */}
+            <FadeIn delay={0.2} className="flex flex-col items-center">
+              <div className="bg-white rounded-[2.5rem] p-4 sm:p-6 shadow-xl flex flex-col items-center w-full max-w-md">
+                <div className="w-full rounded-[1.75rem] overflow-hidden bg-black">
+                  <iframe
+                    src="https://www.instagram.com/reel/DW8vzjmD33I/embed"
+                    title="Little Affair Farm-to-Table Culinary Reel"
+                    className="w-full h-[540px] sm:h-[580px] border-0"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <ZoomIn className="text-white w-8 h-8" />
-                  </div>
                 </div>
-                <div className="p-6 flex flex-col flex-grow justify-between text-center">
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-serif text-gray-900 mb-2">
-                      {food.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 font-light leading-relaxed">
-                      {food.caption}
-                    </p>
-                  </div>
+                <div className="w-full pt-4 px-2 flex items-center justify-between">
+                  <span className="font-serif text-lg text-gray-900">
+                    Fresh from Our Kitchen
+                  </span>
+                  <a
+                    href="https://www.instagram.com/reel/DW8vzjmD33I/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-semibold text-accent hover:text-accent-dark"
+                  >
+                    <span>Watch Reel</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
                 </div>
-              </FadeIn>
-            ))}
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* 7. EXPERIENCE AND ADVENTURE - Matching website's Experiences.tsx card design & uploaded images */}
+      {/* 7. EXPERIENCE AND ADVENTURE - First heading is Sariska Tiger Safari with new image */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 bg-white rounded-[2.5rem] md:rounded-[4rem] shadow-sm">
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center mb-12 md:mb-16">
@@ -850,7 +834,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* 8. WHAT OUR GUESTS SAY ABOUT US - Real Google Reviews from attached screenshots + 3 Client Video Testimonials */}
+      {/* 8. WHAT OUR GUESTS SAY ABOUT US - Real Google Reviews + Single Client Video Testimonial */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center mb-12 md:mb-16">
@@ -875,7 +859,6 @@ export function LandingPage() {
               <FadeIn key={idx} delay={idx * 0.08} className="h-full">
                 <div className="bg-white rounded-[2rem] p-6 sm:p-8 shadow-lg h-full flex flex-col justify-between border border-black/5">
                   <div>
-                    {/* Header matching Google review screenshot */}
                     <div className="flex items-start justify-between gap-3 mb-4">
                       <div className="flex items-center gap-3">
                         <div
@@ -897,7 +880,6 @@ export function LandingPage() {
                       </span>
                     </div>
 
-                    {/* 5 Stars */}
                     <div className="flex items-center gap-1 mb-4">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
@@ -907,13 +889,11 @@ export function LandingPage() {
                       ))}
                     </div>
 
-                    {/* Review Body */}
                     <p className="text-gray-700 font-normal text-sm sm:text-[15px] leading-relaxed mb-5">
                       {review.text}
                     </p>
                   </div>
 
-                  {/* Trip metadata from Google screenshot */}
                   <div className="pt-4 border-t border-gray-100 space-y-1 text-xs text-gray-600">
                     {review.tripType && (
                       <p>
@@ -936,47 +916,45 @@ export function LandingPage() {
             ))}
           </div>
 
-          {/* 3 Video Testimonials of Clients (https://www.instagram.com/reel/DXRbWOGgXXz/ in all 3 boxes) */}
+          {/* 1 Video Testimonial of Client (https://www.instagram.com/reel/DXRbWOGgXXz/) */}
           <FadeIn className="text-center mb-10 md:mb-12">
             <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-2">
               Watch Real Guest Stories
             </p>
             <h3 className="text-3xl sm:text-4xl font-serif text-gray-900">
-              Client Video Testimonials
+              Client Video Testimonial
             </h3>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {clientTestimonialReels.map((item, idx) => (
-              <FadeIn key={item.id} delay={idx * 0.1}>
-                <div className="bg-white rounded-[2rem] p-4 sm:p-5 shadow-xl flex flex-col items-center">
-                  <div className="w-full rounded-[1.5rem] overflow-hidden bg-black">
-                    <iframe
-                      src={item.embedUrl}
-                      title={item.label}
-                      className="w-full h-[520px] sm:h-[560px] border-0"
-                      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                      allowFullScreen
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="w-full pt-4 px-2 flex items-center justify-between">
-                    <span className="font-serif text-lg text-gray-900">
-                      {item.label}
-                    </span>
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-semibold text-accent hover:text-accent-dark"
-                    >
-                      <span>View Reel</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
+          <div className="max-w-md mx-auto">
+            <FadeIn>
+              <div className="bg-white rounded-[2rem] p-4 sm:p-5 shadow-xl flex flex-col items-center">
+                <div className="w-full rounded-[1.5rem] overflow-hidden bg-black">
+                  <iframe
+                    src="https://www.instagram.com/reel/DXRbWOGgXXz/embed"
+                    title="Guest Video Testimonial"
+                    className="w-full h-[540px] sm:h-[580px] border-0"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                  />
                 </div>
-              </FadeIn>
-            ))}
+                <div className="w-full pt-4 px-2 flex items-center justify-between">
+                  <span className="font-serif text-lg text-gray-900">
+                    Guest Video Review
+                  </span>
+                  <a
+                    href="https://www.instagram.com/reel/DXRbWOGgXXz/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-semibold text-accent hover:text-accent-dark"
+                  >
+                    <span>View Reel</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -1131,33 +1109,129 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Lightbox for Culinary Delights */}
+      {/* Lightbox for Recreation Amenities (4 images per amenity) */}
       <AnimatePresence>
-        {selectedFoodImg !== null && (
+        {activeAmenityLightbox !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center p-4"
+            onClick={() => setActiveAmenityLightbox(null)}
+          >
+            <button
+              className="absolute top-5 right-5 text-white/75 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors z-[101]"
+              onClick={() => setActiveAmenityLightbox(null)}
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            {(() => {
+              const currentAmenity = recreationItems[activeAmenityLightbox.amenityIndex];
+              const currentImages = currentAmenity.images;
+              const currentIdx = activeAmenityLightbox.imageIndex;
+
+              return (
+                <div
+                  className="max-w-5xl w-full flex flex-col items-center"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="mb-4 text-center text-white">
+                    <h4 className="font-serif text-2xl sm:text-3xl">
+                      {currentAmenity.title}
+                    </h4>
+                    <p className="text-xs uppercase tracking-widest text-white/60 mt-1">
+                      Photo {currentIdx + 1} of {currentImages.length}
+                    </p>
+                  </div>
+
+                  <div className="relative w-full flex items-center justify-center">
+                    <button
+                      type="button"
+                      className="absolute left-0 sm:left-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-3 rounded-full bg-black/50 hover:bg-black/80 transition-colors z-[101]"
+                      onClick={() =>
+                        setActiveAmenityLightbox({
+                          amenityIndex: activeAmenityLightbox.amenityIndex,
+                          imageIndex:
+                            (currentIdx - 1 + currentImages.length) % currentImages.length
+                        })
+                      }
+                    >
+                      <ChevronLeft className="w-8 h-8" />
+                    </button>
+
+                    <motion.img
+                      key={`${activeAmenityLightbox.amenityIndex}-${currentIdx}`}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.25 }}
+                      src={currentImages[currentIdx]}
+                      alt={`${currentAmenity.title} ${currentIdx + 1}`}
+                      className="max-h-[62vh] max-w-[85vw] object-contain rounded-2xl shadow-2xl"
+                    />
+
+                    <button
+                      type="button"
+                      className="absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-3 rounded-full bg-black/50 hover:bg-black/80 transition-colors z-[101]"
+                      onClick={() =>
+                        setActiveAmenityLightbox({
+                          amenityIndex: activeAmenityLightbox.amenityIndex,
+                          imageIndex: (currentIdx + 1) % currentImages.length
+                        })
+                      }
+                    >
+                      <ChevronRight className="w-8 h-8" />
+                    </button>
+                  </div>
+
+                  {/* 4-Image Thumbnail Strip inside Lightbox */}
+                  <div className="grid grid-cols-4 gap-3 mt-6 max-w-xl w-full px-2">
+                    {currentImages.slice(0, 4).map((thumb, tIdx) => (
+                      <button
+                        key={tIdx}
+                        type="button"
+                        onClick={() =>
+                          setActiveAmenityLightbox({
+                            amenityIndex: activeAmenityLightbox.amenityIndex,
+                            imageIndex: tIdx
+                          })
+                        }
+                        className={`relative aspect-[4/3] rounded-xl overflow-hidden border-2 transition-all ${
+                          currentIdx === tIdx
+                            ? 'border-accent scale-105 shadow-lg'
+                            : 'border-white/20 opacity-65 hover:opacity-100'
+                        }`}
+                      >
+                        <img
+                          src={thumb}
+                          alt={`${currentAmenity.title} thumbnail ${tIdx + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Lightbox for Thali Image */}
+      <AnimatePresence>
+        {thaliLightboxOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
-            onClick={() => setSelectedFoodImg(null)}
+            onClick={() => setThaliLightboxOpen(false)}
           >
             <button
               className="absolute top-6 right-6 text-white/70 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors z-[101]"
-              onClick={() => setSelectedFoodImg(null)}
+              onClick={() => setThaliLightboxOpen(false)}
             >
               <X className="w-8 h-8" />
-            </button>
-
-            <button
-              className="absolute left-4 md:left-12 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-3 rounded-full hover:bg-white/10 transition-colors z-[101]"
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedFoodImg(
-                  (selectedFoodImg - 1 + culinaryDelights.length) % culinaryDelights.length
-                );
-              }}
-            >
-              <ChevronLeft className="w-10 h-10" />
             </button>
 
             <div
@@ -1165,33 +1239,22 @@ export function LandingPage() {
               onClick={(e) => e.stopPropagation()}
             >
               <motion.img
-                key={selectedFoodImg}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.25 }}
-                src={culinaryDelights[selectedFoodImg].src}
-                alt={culinaryDelights[selectedFoodImg].title}
+                src="/gallery/IMG_7755.jpg"
+                alt="Traditional Indian & Rajasthani Thali"
                 className="max-h-[78vh] max-w-[90vw] object-contain rounded-2xl shadow-2xl"
               />
               <div className="mt-4 text-center text-white">
                 <h4 className="font-serif text-xl sm:text-2xl">
-                  {culinaryDelights[selectedFoodImg].title}
+                  Traditional Indian &amp; Rajasthani Thali
                 </h4>
                 <p className="text-sm text-white/75 font-light mt-1">
-                  {culinaryDelights[selectedFoodImg].caption}
+                  Authentic regional delicacies prepared fresh for every guest.
                 </p>
               </div>
             </div>
-
-            <button
-              className="absolute right-4 md:right-12 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-3 rounded-full hover:bg-white/10 transition-colors z-[101]"
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedFoodImg((selectedFoodImg + 1) % culinaryDelights.length);
-              }}
-            >
-              <ChevronRight className="w-10 h-10" />
-            </button>
           </motion.div>
         )}
       </AnimatePresence>
