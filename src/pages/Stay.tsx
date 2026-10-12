@@ -170,8 +170,8 @@ export const ROOM_CATEGORIES: RoomCategoryData[] = [
     ]
   },
   {
-    slug: 'stone-cottage-with-plunger-pool',
-    title: 'Stone Cottage With Plunger Pool',
+    slug: 'stone-cottage-with-plunge-pool',
+    title: 'Stone Cottage With Plunge Pool',
     subtitle: 'Along with Sit Out',
     coverImage: '/landing/stay/stone-cottage-plunge-pool/4.jpg',
     images: [
@@ -301,8 +301,8 @@ export function Stay() {
   const activeCategory = ROOM_CATEGORIES.find(
     (cat) =>
       cat.slug === categorySlug ||
-      (categorySlug === 'stone-cottage-with-plunge-pool' &&
-        cat.slug === 'stone-cottage-with-plunger-pool')
+      (categorySlug === 'stone-cottage-with-plunger-pool' &&
+        cat.slug === 'stone-cottage-with-plunge-pool')
   );
 
   const lightboxList = activeCategory
